@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 6.6
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -90,6 +90,15 @@ That's it. You're done!
 
 == Changelog ==
 
+= 1.6.4 =
+* FIX: Save tooptip position properly
+* FIX: Some cells becoming empty on edit
+* FIX: PHP Warning for button label
+* FIX: Text corruption in custom html element
+* FIX: Any element getting removed in editor for some tables
+* FIX: Saving table row/col spacing properly
+
+
 = 1.6.3 =
 * NEW: Added option for hiding column on mobile
 * FIX: Button font size not saving
@@ -101,6 +110,8 @@ That's it. You're done!
 * FIX: Button width & id when no link
 * FIX: Button content alignment
 * FIX: Button label not getting saved properly
+* FIX: Saving icon color properly
+* FIX: Image wrapper attributes
 
 = 1.6.2 =
 * FIX: HTML element issues

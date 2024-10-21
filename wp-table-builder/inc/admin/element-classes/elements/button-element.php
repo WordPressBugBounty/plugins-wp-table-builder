@@ -448,9 +448,11 @@ class Button_Element extends Element_Base
             "data-wptb-element-color" => $props['color'] ?? false,
         ]) . $hoverAttrs;
 
+        $labelBg = $props['labelBg'] ?? '#ffffff';
+
         $labelStyle = TableRenderer::generate_css_string([
             "display" => $props['hasLabel'] ?? false ? 'inline-flex' : 'none',
-            "background-color" => $props['labelBg'] ?? '',
+            "background-color" => $labelBg,
             "color" => $props['labelColor'] ?? '',
         ]);
 
@@ -496,10 +498,10 @@ class Button_Element extends Element_Base
         if ($props['hasLabel']) {
             $wrapperClass .= ' wptb-button-has-label';
         }
-        $btnAlignment = esc_attr($props['buttonAlignment']);
+        $btnAlignment = esc_attr($props['buttonAlignment'] ?? 'center');
 
-        $text = wp_kses_post($props['text']);
-        $labelText = wp_kses_post($props['labelText']);
+        $text = wp_kses_post($props['text']  ?? '');
+        $labelText = wp_kses_post($props['labelText']  ?? '');
 
         $iconSrc = esc_attr($props['icon'] ?? '');
         $icon = TableRenderer::get_icon($iconSrc);
@@ -517,7 +519,7 @@ class Button_Element extends Element_Base
                             $icon .
                         '</div>' .
                         '<div class="wptb-button-label" style="' . $labelStyle . '" ' . $hoverAttrs . '>' .
-                            '<div class="wptb-button-label-decorator" ' . $hoverAttrs . ' style="border-color: rgba(0, 0, 0, 0) #ffffff rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);">' .
+                            '<div class="wptb-button-label-decorator" ' . $hoverAttrs . ' style="border-color: rgba(0, 0, 0, 0) '.$labelBg.' rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);">' .
                                 '<br />' .
                             '</div>' .
                             '<div class="wptb-button-label-text" ' . $hoverAttrs . '>' .
