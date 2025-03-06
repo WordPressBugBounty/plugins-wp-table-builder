@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 6.7
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -89,6 +89,15 @@ That's it. You're done!
 8. Shortcode in WP Table Builder.
 
 == Changelog ==
+
+= 2.0.2 =
+* FIX: New builder not visible to non admin users
+* FIX: Tags functionality was missing
+* FIX: Theme color not applying properly
+* FIX: Link url not updating
+* FIX: Improved ColorPicker UX
+* IMPROVE: Ability to temporarily switch to the old builder
+* PRO: FIX: Added save as template option
 
 = 2.0.1 =
 * FIX: remove nullsafe operator (php 7.4)
