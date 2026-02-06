@@ -4,33 +4,23 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6ad11c241e860d6ccdbf7d94e71ccbb4
+class ComposerStaticInit3ed2bebb4915a5dd24f82bd0725cc35a
 {
+    public static $files = array (
+        '8d50dc88e56bace65e1e72f6017983ed' => __DIR__ . '/..' . '/freemius/wordpress-sdk/start.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
-        'R' => 
+        'W' =>
         array (
-            'Rhukster\\DomSanitizer\\' => 22,
-        ),
-        'D' => 
-        array (
-            'DotCamp\\Promoter\\Tests\\' => 23,
-            'DotCamp\\Promoter\\' => 17,
+            'WPTableBuilder\\' => 15,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Rhukster\\DomSanitizer\\' => 
+        'WPTableBuilder\\' =>
         array (
-            0 => __DIR__ . '/..' . '/rhukster/dom-sanitizer/src',
-        ),
-        'DotCamp\\Promoter\\Tests\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dotcamp/promoter/__tests__',
-        ),
-        'DotCamp\\Promoter\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dotcamp/promoter/inc',
-            1 => __DIR__ . '/..' . '/dotcamp/promoter/__tests__/php/unit/inc',
+            0 => __DIR__ . '/../..' . '/inc',
         ),
     );
 
@@ -41,9 +31,9 @@ class ComposerStaticInit6ad11c241e860d6ccdbf7d94e71ccbb4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6ad11c241e860d6ccdbf7d94e71ccbb4::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6ad11c241e860d6ccdbf7d94e71ccbb4::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit6ad11c241e860d6ccdbf7d94e71ccbb4::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit3ed2bebb4915a5dd24f82bd0725cc35a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit3ed2bebb4915a5dd24f82bd0725cc35a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit3ed2bebb4915a5dd24f82bd0725cc35a::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -2,8 +2,8 @@
 Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembircan, protibimbok, ultimateblocks, wpcdplugin, wpleaders1
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
-Tested up to: 6.8
-Stable tag: 2.0.17
+Tested up to: 6.9
+Stable tag: 2.1.5
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -33,17 +33,17 @@ All the elements come with customization options of their own.
 
 We have a cell management mode which comes with options like Add New Row, Add New Column, Merge Cells, Split Cells and many more.
 
-## How to Use 
+## How to Use
 
 https://www.youtube.com/watch?v=VAU-i6RvXSI
 
-After you install the plugin, you will see a Table Builder menu. Go to Table Builder > Add New. 
+After you install the plugin, you will see a Table Builder menu. Go to Table Builder > Add New.
 
-You will be able select column number and row number. Once you select that, click on Generate. The table will be generated. 
+You will be able select column number and row number. Once you select that, click on Generate. The table will be generated.
 
 You can then drag and drop elements from the left panel into the table cells. Once you are done adding and editing elements, click on Save to save the tables.
 
-After the table is saved, you can embed it in post and pages by using a shortcode. Click on 'Embed' on the top to get the shortcode. 
+After the table is saved, you can embed it in post and pages by using a shortcode. Click on 'Embed' on the top to get the shortcode.
 
 You can also get the shortcode from the 'All Tables' list under 'Table Builder' menu.
 
@@ -55,7 +55,7 @@ You can also import tables from TablePress plugin.
 
 ## Export Tables
 
-Just like importing you can export the tables to CSV or XML files. 
+Just like importing you can export the tables to CSV or XML files.
 
 If you are looking to move tables created with WP Table Builder to another site, XML is the better choice as it will preserve table settings.
 
@@ -79,18 +79,83 @@ That's it. You're done!
 
 == Screenshots ==
 
-1. Creating new table in WP Table Builder.
-2. First Table In WP Table Builder.
-3. Text In WP Table Builder.
-4. Images In WP Table Builder.
-5. Text 2 In WP Table Builder.
-6. List Options In WP Table Builder.
-7. Button In WP Table Builder.
-8. Shortcode in WP Table Builder.
+1. New Table.
+2. Table Interface
+3. Images in the Table.
+4. Lists in the Table.
+5. Star Ratings in the Table.
+6. Buttons in the Table.
+7. Customize the Table.
+8. Responsive Tables.
 
 == Changelog ==
 
-= 2.0.17 -
+
+= 2.1.5 =
+* FIX: Saving as template
+* FIX: Corner Ribbon Style
+* FIX: Table preview width not responding to change in the builder
+* FIX: Saving floating point percentage in circle rating & progress bar
+* FIX: Hide column on mobile is not working
+* FIX: Shortcode not working properly in the frontend
+* IMPROVE: Added padding option for the whole table
+
+= 2.1.4 =
+* IMPROVE: Individual item color and icon options for styled list items
+* IMPROVE: Individual item color option for list
+* IMPROVE: Persist formatting and links between copy-paste
+* FIX: Text color getting overridden
+* FIX: Image lazy loading
+
+= 2.1.3 =
+* FIX: Unordered list displaying as ordered
+* FIX: List Item text breaking
+* FIX: PHP Compatibility issue
+* FIX: Improved style isolation
+* IMPROVE: Added recovery option for corrupted tables
+
+= 2.1.2 =
+* FIX: Version sync from 2.0.x
+* IMPROVE: Include file hash in the assets url
+* FIX: Responsiveness not working on some edge cases
+* FIX: Default odd/even colors in responsive mode
+* FIX: Import export functionality
+* FIX: Tags functionality
+* FIX: Padding not parsing properly
+* FIX: Improve row background specificity
+* FIX: saving & rendering circle rating type properly
+
+= 2.1.1 = 
+* Re upload to wordpress
+
+= 2.1.0 =
+* IMPROVE: Removed legacy code and builder
+* IMPROVE: Custom style preview is available in the builder
+* IMPROVE: Search preview is available in the builder
+* IMPROVE: Improved row/column moving UX
+* FIX: Colors losing their alpha value
+* FIX: Allow adding image from url
+* FIX: Table inner border getting lost in some tables
+* FIX: Border Color becoming transparent on reset
+* FIX: Prevent error when saving table in some sites
+
+= 2.0.20 = 
+* FIX: Securiy improvements
+
+= 2.0.19 =
+* IMPROVE: Added support for media queries in custom styles
+* FIX: Some tables becoming small in mobile devices
+
+= 2.0.18 =
+* FIX: Sticky first column not persisting
+* FIX: Table spacing not working properly for large tables
+* FIX: Incorrect versions are shown in the rollback option
+* FIX: Error when saving shortcode element
+* FIX: Device detection logic for responsiveness
+* IMPROVE: Hard limit highlight scaling between 100-105%
+* IMPROVE: Make the default items per head = 1 for mobile
+
+= 2.0.17 =
 * FIX: Scrollable in mobile devices when responsive is enabled
 * PRO: FIX: Search & Sort feature not working properly
 
@@ -672,7 +737,7 @@ That's it. You're done!
 * ADD: Table item in 'Add New' Menu on Admin bar.
 * FIX: Builder Freezing When Table Has Lots of Columns and Rows.
 
-= 1.1.5 = 
+= 1.1.5 =
 
 * FIX: Table not Showing issue.
 * FIX: Table Responsiveness issue.
@@ -681,7 +746,7 @@ That's it. You're done!
 * ADD: Getting Started Page with Video.
 * UPDATE: Translation Files.
 
-= 1.1.4 = 
+= 1.1.4 =
 
 * ADD: Option to set max width for table container.
 * FIX: Table Alignment setting issue.
@@ -690,7 +755,7 @@ That's it. You're done!
 * FIX: Table Settings not showing issue.
 * FIX: Table duplicaton issue.
 
-= 1.1.3 = 
+= 1.1.3 =
 
 * ADD: Custom HTML Element
 * ADD: Shortcode Element
@@ -718,7 +783,7 @@ That's it. You're done!
 = 1.0.9 =
 
 * NEW: Alignment Settings for Star Rating.
-* NEW: Back button in Element options title to get back to main panel easily. 
+* NEW: Back button in Element options title to get back to main panel easily.
 * FIX: Issue with Undo-Redo functionality.
 * FIX: Default text size not matching the settings.
 
@@ -737,7 +802,7 @@ That's it. You're done!
 * FIX: Image Element not being added between Text and List element.
 * FIX: Accidental Closing of the editor. Gives warning before closing.
 
-= 1.0.5 = 
+= 1.0.5 =
 
 * NEW: Undo/Redo options for the builder.
 * FIX: Element Actions getting saved with the table.
@@ -752,7 +817,7 @@ That's it. You're done!
 
 = 1.0.3 =
 
-* FIX: PHP function not declared issue. 
+* FIX: PHP function not declared issue.
 * NEW: Preview button in the builder.
 
 = 1.0.2 =

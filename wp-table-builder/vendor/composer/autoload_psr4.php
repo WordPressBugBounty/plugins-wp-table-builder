@@ -6,7 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Rhukster\\DomSanitizer\\' => array($vendorDir . '/rhukster/dom-sanitizer/src'),
-    'DotCamp\\Promoter\\Tests\\' => array($vendorDir . '/dotcamp/promoter/__tests__'),
-    'DotCamp\\Promoter\\' => array($vendorDir . '/dotcamp/promoter/inc', $vendorDir . '/dotcamp/promoter/__tests__/php/unit/inc'),
+    'WPTableBuilder\\' => array($baseDir . '/inc'),
 );

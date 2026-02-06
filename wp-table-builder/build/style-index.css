@@ -1,0 +1,81 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/.pnpm/css-loader@6.11.0_webpack@5.101.3/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../../node_modules/.pnpm/postcss-loader@6.2.1_postcss@8.5.6_webpack@5.101.3/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../../node_modules/.pnpm/sass-loader@16.0.5_sass@1.92.1_webpack@5.101.3/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/components/recovery/style.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.wptb-gutenberg-recovery {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #c3c4c7;
+  border-left: 4px solid #d63638;
+  border-radius: 2px;
+}
+
+.wptb-gutenberg-recovery-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #fcf0f1;
+  border-radius: 50%;
+}
+.wptb-gutenberg-recovery-icon svg {
+  width: 20px;
+  height: 20px;
+  color: #d63638;
+}
+
+.wptb-gutenberg-recovery-content {
+  flex: 1;
+  min-width: 0;
+}
+.wptb-gutenberg-recovery-content h3 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d2327;
+}
+.wptb-gutenberg-recovery-content p {
+  margin: 0;
+  font-size: 12px;
+  color: #50575e;
+}
+
+.wptb-gutenberg-recovery-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.wptb-gutenberg-recovery-btn {
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+.wptb-gutenberg-recovery-btn--primary {
+  background: #2271b1;
+  color: #fff;
+  border: 1px solid #2271b1;
+}
+.wptb-gutenberg-recovery-btn--primary:hover {
+  background: #135e96;
+  border-color: #135e96;
+}
+.wptb-gutenberg-recovery-btn--secondary {
+  background: #f6f7f7;
+  color: #50575e;
+  border: 1px solid #c3c4c7;
+}
+.wptb-gutenberg-recovery-btn--secondary:hover {
+  background: #f0f0f1;
+  color: #1d2327;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

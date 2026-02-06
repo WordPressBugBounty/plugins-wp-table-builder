@@ -1,0 +1,99 @@
+{
+  "_common-l539htXg.js": {
+    "file": "assets/common-l539htXg.js",
+    "name": "common",
+    "imports": [
+      "_parser-Bsy1KmTm.js"
+    ]
+  },
+  "_corruption-D0QkPJCD.js": {
+    "file": "assets/corruption-D0QkPJCD.js",
+    "name": "corruption",
+    "imports": [
+      "_parser-Bsy1KmTm.js"
+    ]
+  },
+  "_index-lh7CFknr.js": {
+    "file": "assets/index-lh7CFknr.js",
+    "name": "index",
+    "imports": [
+      "_corruption-D0QkPJCD.js",
+      "_parser-Bsy1KmTm.js"
+    ]
+  },
+  "_parser-Bsy1KmTm.js": {
+    "file": "assets/parser-Bsy1KmTm.js",
+    "name": "parser"
+  },
+  "_renderer-DWCimQ9s.js": {
+    "file": "assets/renderer-DWCimQ9s.js",
+    "name": "renderer",
+    "imports": [
+      "_parser-Bsy1KmTm.js"
+    ]
+  },
+  "src/editor-common.ts": {
+    "file": "assets/editor-common-ChsHaSAj.js",
+    "name": "editor-common",
+    "src": "src/editor-common.ts",
+    "isEntry": true,
+    "imports": [
+      "_index-lh7CFknr.js",
+      "_corruption-D0QkPJCD.js",
+      "_renderer-DWCimQ9s.js",
+      "_common-l539htXg.js",
+      "_parser-Bsy1KmTm.js"
+    ]
+  },
+  "src/editor.scss": {
+    "file": "editor-style.css",
+    "src": "src/editor.scss",
+    "isEntry": true
+  },
+  "src/frontend/common.ts": {
+    "file": "assets/frontend-common-SixpF7Dm.js",
+    "name": "frontend-common",
+    "src": "src/frontend/common.ts",
+    "isEntry": true,
+    "imports": [
+      "_parser-Bsy1KmTm.js",
+      "_common-l539htXg.js"
+    ]
+  },
+  "src/frontend/index.ts": {
+    "file": "assets/frontend-script-D_5hGUc_.js",
+    "name": "frontend-script",
+    "src": "src/frontend/index.ts",
+    "isEntry": true,
+    "imports": [
+      "_parser-Bsy1KmTm.js",
+      "_corruption-D0QkPJCD.js",
+      "_renderer-DWCimQ9s.js"
+    ]
+  },
+  "src/index.tsx": {
+    "file": "assets/editor-main-VVHfZ_ph.js",
+    "name": "editor-main",
+    "src": "src/index.tsx",
+    "isEntry": true,
+    "imports": [
+      "_index-lh7CFknr.js",
+      "_corruption-D0QkPJCD.js",
+      "_parser-Bsy1KmTm.js"
+    ],
+    "css": [
+      "editor-main.css"
+    ]
+  },
+  "src/public/i18n.ts": {
+    "file": "assets/editor-i18n-l0sNRNKZ.js",
+    "name": "editor-i18n",
+    "src": "src/public/i18n.ts",
+    "isEntry": true
+  },
+  "src/styles.scss": {
+    "file": "frontend-style.css",
+    "src": "src/styles.scss",
+    "isEntry": true
+  }
+}
