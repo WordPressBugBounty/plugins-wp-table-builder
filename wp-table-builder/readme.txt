@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 6.9
-Stable tag: 2.1.5
+Stable tag: 2.1.6
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -90,6 +90,11 @@ That's it. You're done!
 
 == Changelog ==
 
+
+= 2.1.6 =
+* FIX: Sticky first row & column
+* FIX: Sort buttons becoming hidden in some sites
+* FIX: Custom styles not working in some cases
 
 = 2.1.5 =
 * FIX: Saving as template
