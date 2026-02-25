@@ -42,7 +42,7 @@ class Image
                 $attrs['url'] = 'https://' . ltrim($attrs['url'], '/');
             }
             $lAttrs = RenderUtils::generate_attrs_string([
-                "href" => $attrs['url'] ?? false,
+                "href" => RenderUtils::esc_url($attrs['url'] ?? ''),
                 "target" => $attrs['linkTarget'] ?? false,
                 "rel" => $attrs['linkRel'] ?? false,
                 "data-wptb-link-enable-convert-relative" => $attrs['convertToAbsolute'] ?? false,

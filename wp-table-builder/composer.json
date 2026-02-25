@@ -15,6 +15,7 @@
     "php-stubs/wordpress-stubs": "^6.7"
   },
   "require": {
-    "freemius/wordpress-sdk": "^2.13"
+    "freemius/wordpress-sdk": "^2.13",
+    "ezyang/htmlpurifier": "^4.19"
   }
 }

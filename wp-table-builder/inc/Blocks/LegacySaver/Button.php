@@ -74,7 +74,7 @@ class Button
                 $props['url'] = 'https://' . ltrim($props['url'], '/');
             }
             $lAttrs .= RenderUtils::generate_attrs_string([
-                "href" => $props['url'] ?? false,
+                "href" => RenderUtils::esc_url($props['url'] ?? ''),
                 "target" => $props['linkTarget'] ?? false,
                 "rel" => $props['linkRel'] ?? false,
                 "data-wptb-link-enable-convert-relative" => $props['convertToAbsolute'] ?? false,

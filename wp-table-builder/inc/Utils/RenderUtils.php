@@ -2,6 +2,9 @@
 
 namespace WPTableBuilder\Utils;
 
+use HTMLPurifier;
+use HTMLPurifier_Config;
+
 class RenderUtils
 {
     public static function generate_css_string($styles)
@@ -37,72 +40,73 @@ class RenderUtils
         return '';
     }
 
+    public static function esc_url($url)
+    {
+        if (!$url) {
+            return '#';
+        }
+        return esc_url($url);
+    }
+
     public static function strip_xss($html)
     {
         if (!$html) {
             return '';
         }
-
-        $wrapper = '<div>' . $html . '</div>';
-
-        libxml_use_internal_errors(true);
-
-        $dom = new \DOMDocument();
-        $dom->encoding = 'UTF-8';
-        $wrapper = mb_encode_numericentity($wrapper, [0x80, 0x10FFFF, 0, ~0], 'UTF-8');
-        $dom->loadHTML($wrapper, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
-
-        $xpath = new \DOMXPath($dom);
-
-
-        $dangerousTags = ['script', 'object', 'embed', 'link', 'style', 'iframe'];
-        $tagsQuery = '//' . implode(' | //', $dangerousTags);
-
-        foreach ($xpath->query($tagsQuery) as $node) {
-            if ($node->nodeName === 'iframe') {
-                $src = $node->getAttribute('src');
-                if (!preg_match('#^https://(www\.)?youtube\.com/embed/[\w-]+$#', $src)) {
-                    $node->parentNode->removeChild($node);
-                }
-            } else {
-                $node->parentNode->removeChild($node);
-            }
-        }
-
-
-        foreach ($xpath->query('//*[@*]') as $node) {
-            foreach (iterator_to_array($node->attributes) as $attr) {
-                if (self::isDangerousAttribute($attr)) {
-                    $node->removeAttribute($attr->nodeName);
-                }
-            }
-        }
-
-        $body = $dom->getElementsByTagName('div')->item(0);
-        $innerHTML = '';
-        foreach ($body->childNodes as $child) {
-            $innerHTML .= $dom->saveHTML($child);
-        }
-
-        libxml_clear_errors();
-
-        return $innerHTML;
-    }
-
-
-    private static function isDangerousAttribute($attr)
-    {
-        $name = strtolower($attr->nodeName);
-        $value = strtolower($attr->nodeValue);
-        return (
-            strpos($name, 'on') === 0 ||
-            strpos($value, 'javascript:') !== false
-            // || ($name === 'style' && (
-            //     strpos($value, 'expression(') !== false ||
-            //     strpos($value, 'javascript:') !== false
-            // ))
+    
+        $config = HTMLPurifier_Config::createDefault();
+    
+        $config->set('HTML.Allowed', implode(',', [
+            'b[class]', 'strong[class]', 'i[class]', 'em[class]', 'u[class]',
+            'p[class]', 'br',
+            'ul[class]', 'ol[class]', 'li[class]',
+            'span[class]',
+            'a[href|target|rel|class]', 
+            'button[type|class]', 'div[class]',
+            'iframe[src|width|height|frameborder|allowfullscreen|class]',
+            'img[src|width|height|class]',
+            'table[class]', 'caption[class]',
+            'thead[class]', 'tbody[class]', 'tfoot[class]', 'tr[class]',
+            'td[colspan|rowspan|class]', 'th[colspan|rowspan|scope|class]',
+            'colgroup[span|class]', 'col[span|class]',
+            'form[class]', 'input[type|class]', 'textarea[class]', 'select[class]', 'option[class]',
+            'fieldset[class]', 'legend[class]',
+            'hr[class]',
+        ]));
+    
+        $config->set('URI.AllowedSchemes', [
+            'http'   => true,
+            'https'  => true,
+            'mailto' => true,
+            'tel'    => true,
+        ]);
+    
+        $config->set('URI.DisableJavaScript', true);
+    
+        $config->set('HTML.SafeIframe', true);
+    
+        $config->set('URI.SafeIframeRegexp', 
+            '#^https://(www\.)?(youtube\.com/embed/|youtube-nocookie\.com/embed/)#'
         );
+        
+        $config->set('CSS.AllowedProperties', []);
+    
+        $config->set('HTML.TargetBlank', true);
+    
+        $config->set('Cache.SerializerPath', __DIR__ . '/htmlpurifier-cache');
+
+        $config->set('HTML.DefinitionID', 'wptb-custom');
+        $config->set('HTML.DefinitionRev', 1);
+
+        if ($def = $config->maybeGetRawHTMLDefinition()) {
+            $def->addElement('button', 'Inline', 'Inline', 'Common', [
+                'type' => 'Enum#button,submit,reset',
+            ]);
+        }
+    
+        $purifier = new HTMLPurifier($config);
+    
+        return $purifier->purify($html);
     }
 
 

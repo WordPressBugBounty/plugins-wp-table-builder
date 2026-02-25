@@ -41,7 +41,7 @@ class Icon
                     $icon['url'] = 'https://' . ltrim($icon['url'], '/');
                 }
                 $lAttrs = RenderUtils::generate_attrs_string([
-                    "href" => $icon['url'] ?? false,
+                    "href" => RenderUtils::esc_url($icon['url'] ?? ''),
                     "target" => $icon['linkTarget'] ?? false,
                     "rel" => $icon['linkRel'] ?? false,
                     "data-wptb-link-enable-convert-relative" => $icon['convertToAbsolute'] ?? false,
