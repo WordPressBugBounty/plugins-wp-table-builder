@@ -45,7 +45,7 @@ class RenderUtils
         if (!$url) {
             return '#';
         }
-        return esc_url($url);
+        return \esc_url($url);
     }
 
     public static function strip_xss($html)
@@ -80,9 +80,7 @@ class RenderUtils
             'mailto' => true,
             'tel'    => true,
         ]);
-    
-        $config->set('URI.DisableJavaScript', true);
-    
+
         $config->set('HTML.SafeIframe', true);
     
         $config->set('URI.SafeIframeRegexp', 
@@ -90,10 +88,23 @@ class RenderUtils
         );
         
         $config->set('CSS.AllowedProperties', []);
-    
+
         $config->set('HTML.TargetBlank', true);
-    
-        $config->set('Cache.SerializerPath', __DIR__ . '/htmlpurifier-cache');
+
+        $config->set('HTML.Forms', true);
+
+        $cache_path = __DIR__ . '/htmlpurifier-cache';
+
+        if (!file_exists($cache_path)) {
+            @mkdir($cache_path, 0755, true);
+        }
+
+        if (!is_dir($cache_path) || !is_writable($cache_path)) {
+            $cache_path = sys_get_temp_dir() . '/wptb-htmlpurifier-cache';
+        }
+
+
+        $config->set('Cache.SerializerPath', $cache_path);
 
         $config->set('HTML.DefinitionID', 'wptb-custom');
         $config->set('HTML.DefinitionRev', 1);
