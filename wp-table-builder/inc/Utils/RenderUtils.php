@@ -57,8 +57,8 @@ class RenderUtils
         $config = HTMLPurifier_Config::createDefault();
     
         $config->set('HTML.Allowed', implode(',', [
-            'b[class]', 'strong[class]', 'i[class]', 'em[class]', 'u[class]',
-            'p[class]', 'br',
+            'b[class]', 'strong[class]', 'i[class]', 'em[class]', 'u[class]', 's[class]',
+            'p[class|style]', 'br',
             'ul[class]', 'ol[class]', 'li[class]',
             'span[class]',
             'a[href|target|rel|class]', 
@@ -87,7 +87,7 @@ class RenderUtils
             '#^https://(www\.)?(youtube\.com/embed/|youtube-nocookie\.com/embed/)#'
         );
         
-        $config->set('CSS.AllowedProperties', []);
+        $config->set('CSS.AllowedProperties', ['text-align']);
 
         $config->set('HTML.TargetBlank', true);
 
