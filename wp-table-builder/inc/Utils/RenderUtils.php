@@ -61,7 +61,7 @@ class RenderUtils
             'p[class|style]', 'br',
             'ul[class]', 'ol[class]', 'li[class]',
             'span[class]',
-            'a[href|target|rel|class]', 
+            'a[href|target|rel|class|style]', 
             'button[type|class]', 'div[class]',
             'iframe[src|width|height|frameborder|allowfullscreen|class]',
             'img[src|width|height|class]',
@@ -87,7 +87,7 @@ class RenderUtils
             '#^https://(www\.)?(youtube\.com/embed/|youtube-nocookie\.com/embed/)#'
         );
         
-        $config->set('CSS.AllowedProperties', ['text-align']);
+        $config->set('CSS.AllowedProperties', ['text-align', 'font-size', 'color']);
 
         $config->set('HTML.TargetBlank', true);
 

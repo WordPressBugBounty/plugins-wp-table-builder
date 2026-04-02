@@ -123,7 +123,49 @@ class TablePost
             delete_post_meta($id, '_wptb_prebuilt_');
         }
 
+        self::purge_caches($id);
+
         return ApiHandler::response(['message' => $message, 'id' => $id, 'is_new' => $is_new, 'preview_id' => $preview_id]);
+    }
+    private static function purge_caches(int $id): void
+    {
+        clean_post_cache($id);
+
+        // LiteSpeed Cache
+        do_action('litespeed_purge_all');
+
+        // WP Rocket
+        if (function_exists('rocket_clean_domain')) {
+            rocket_clean_domain();
+        }
+
+        // WP Super Cache
+        if (function_exists('wp_cache_clear_cache')) {
+            wp_cache_clear_cache();
+        }
+
+        // W3 Total Cache
+        if (function_exists('w3tc_flush_all')) {
+            w3tc_flush_all();
+        }
+
+        // WP Fastest Cache
+        if (function_exists('wpfc_clear_all_cache')) {
+            wpfc_clear_all_cache();
+        }
+
+        // SG Optimizer
+        if (function_exists('sg_cachepress_purge_cache')) {
+            sg_cachepress_purge_cache();
+        }
+
+        // Autoptimize
+        if (function_exists('autoptimize_flush_pagecache')) {
+            autoptimize_flush_pagecache();
+        }
+
+        // Generic hook used by some caching plugins
+        do_action('wptb_after_table_save', $id);
     }
 
     private static function duplicate_table_internal($id)

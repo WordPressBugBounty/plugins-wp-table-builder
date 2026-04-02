@@ -161,6 +161,9 @@ class Cpt
         <div class="wptb-container-legacy" data-table-id="{$table_id}">
             {$wptb_prebuilt}
         </div>
+        <script>
+            document.currentScript.parentElement.classList.remove('alignfull')
+        </script>
         HTML;
     }
 

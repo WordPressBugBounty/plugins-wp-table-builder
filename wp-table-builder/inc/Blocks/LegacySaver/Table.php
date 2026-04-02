@@ -32,6 +32,7 @@ class Table
 
         $enableMaxWidth = $props['enableMaxWidth'] ?? false;
 
+        
         $attrs_string = RenderUtils::generate_attrs_string([
 
             "class" => "wptb-preview-table wptb-element-main-table_setting-" . $id,
@@ -79,6 +80,8 @@ class Table
             "data-wptb-header-hover-background-color" => $props['hoverHeaderBg'] ?? false,
             "data-wptb-even-row-hover-background-color" => $props['hoverEvenRowBg'] ?? false,
             "data-wptb-odd-row-hover-background-color" => $props['hoverOddRowBg'] ?? false,
+
+            "data-v2-props" => $props['v2Props'] ?? false,
         ]);
 
         $tbody_attrs = RenderUtils::generate_attrs_string([

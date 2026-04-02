@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 6.9
-Stable tag: 2.1.10
+Stable tag: 2.1.11
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -89,6 +89,13 @@ That's it. You're done!
 8. Responsive Tables.
 
 == Changelog ==
+
+= 2.1.11 =
+* NEW: Option to use TH cells for the first row
+* FIX: Image width and links preservation
+* FIX: Purge frontend cache when a table is updated
+* FIX: Table preview layout in the builder
+* FIX: Preserve link colors
 
 = 2.1.10 =
 * FIX: strikethrough and text-align not saving
