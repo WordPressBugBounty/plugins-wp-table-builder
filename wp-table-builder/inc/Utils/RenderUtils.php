@@ -81,6 +81,13 @@ class RenderUtils
             'tel'    => true,
         ]);
 
+        $config->set('Attr.AllowedFrameTargets', [
+            '_blank'  => true,
+            '_self'   => true,
+            '_parent' => true,
+            '_top'    => true,
+        ]);
+
         $config->set('HTML.SafeIframe', true);
     
         $config->set('URI.SafeIframeRegexp', 
