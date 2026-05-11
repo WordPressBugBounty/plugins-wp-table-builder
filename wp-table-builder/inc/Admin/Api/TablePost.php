@@ -292,7 +292,7 @@ class TablePost
         $post_ids = $json['ids'] ?? [];
         $wpdb->query('START TRANSACTION');
         foreach ($post_ids as $id) {
-            if (!get_post_type($id) === Cpt::POST_TYPE) {
+            if (get_post_type($id) !== Cpt::POST_TYPE) {
                 $wpdb->query('ROLLBACK');
                 return ApiHandler::response(['message' => 'Failed to trash table(s).']);
             }
@@ -311,7 +311,7 @@ class TablePost
         $post_ids = $json['ids'] ?? [];
         $wpdb->query('START TRANSACTION');
         foreach ($post_ids as $id) {
-            if (!get_post_type($id) === Cpt::POST_TYPE) {
+            if (get_post_type($id) !== Cpt::POST_TYPE) {
                 $wpdb->query('ROLLBACK');
                 return ApiHandler::response(['message' => 'Failed to restore table(s).']);
             }

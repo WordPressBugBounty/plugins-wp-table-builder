@@ -59,6 +59,7 @@ class Cell
             "data-wptb-css-td-auto-height" => $props['autoHeight'] ?? false,
             "data-wptb-cell-vertical-alignment" => $props['vAlign'] ?? false,
             "data-wptb-own-bg-color" => $props['ownBgColor'] ?? false,
+            "data-wptb-cell-distribution" => $props['contentDistribution'] ?? false,
         ]);
 
         $classNames = isset($props['highlighted']) ? 'wptb-col-highlighted-' . esc_attr($props['highlighted']) . ' wptb-highlighted ' : '';

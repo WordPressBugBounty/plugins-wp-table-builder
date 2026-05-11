@@ -13,11 +13,11 @@ class Button
         $props = $block['props'] ?? [];
 
         $cStyle = RenderUtils::generate_css_string([
-            'padding' => $props['padding'] ?? '',
             'margin' => $props['margin'] ?? '',
         ]);
 
         $btnStyle = RenderUtils::generate_css_string([
+            'padding' => $props['padding'] ?? '',
             "border-radius" => $props['borderRadius'] ?? '',
             "background-color" => $props['background'] ?? '',
             "color" => $props['color'] ?? '',
@@ -117,7 +117,7 @@ class Button
                     </div>
                 </{$lTag}>
             </div>
-        </div>;
+        </div>
         HTML;
         //@formatter:on
     }

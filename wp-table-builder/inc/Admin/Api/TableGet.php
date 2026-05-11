@@ -58,8 +58,15 @@ class TableGet
         $sort_order = isset($request['sort_order']) ? strtoupper(sanitize_text_field($request['sort_order'])) : 'DESC';
 
 
-        $sort_order = in_array($sort_order, ['ASC', 'DESC']) ? $sort_order : 'DESC';
-        $sort_by = in_array($sort_by, ['ID', 'title', 'date', 'modified']) ? $sort_order : 'ID';
+        $sort_order = in_array($sort_order, ['ASC', 'DESC'], true) ? $sort_order : 'DESC';
+        $sort_by_key = strtolower($sort_by);
+        $orderby_map = [
+            'id' => 'ID',
+            'title' => 'title',
+            'date' => 'date',
+            'modified' => 'modified',
+        ];
+        $sort_by = $orderby_map[$sort_by_key] ?? 'ID';
 
         $page = max(1, $page);
         $per_page = min(max(15, $per_page), 100);
@@ -84,10 +91,28 @@ class TableGet
             'order' => $sort_order,
         ];
 
-        add_filter('posts_where', function ($where, $query) use ($search_term, $except) {
+        $posts_where_filter = function ($where, $query) use ($search_term, $except) {
             global $wpdb;
             if (!empty($search_term)) {
-                $where .= $wpdb->prepare(" AND {$wpdb->posts}.post_title LIKE %s", '%' . $wpdb->esc_like($search_term) . '%');
+                $like = '%' . $wpdb->esc_like($search_term) . '%';
+                $id_match = 0;
+                if (preg_match('/\[wptb[^\]]*id\s*=\s*["\']?(\d+)["\']?[^\]]*\]/i', $search_term, $m)) {
+                    $id_match = absint($m[1]);
+                } elseif (ctype_digit($search_term)) {
+                    $id_match = absint($search_term);
+                }
+                if ($id_match > 0) {
+                    $where .= $wpdb->prepare(
+                        " AND ({$wpdb->posts}.post_title LIKE %s OR {$wpdb->posts}.ID = %d)",
+                        $like,
+                        $id_match
+                    );
+                } else {
+                    $where .= $wpdb->prepare(
+                        " AND ({$wpdb->posts}.post_title LIKE %s)",
+                        $like
+                    );
+                }
             }
 
             if ($except) {
@@ -95,9 +120,11 @@ class TableGet
             }
 
             return $where;
-        }, 10, 2);
+        };
 
+        add_filter('posts_where', $posts_where_filter, 10, 2);
         $query = new WP_Query($args);
+        remove_filter('posts_where', $posts_where_filter, 10);
 
         $post_data = [];
 
@@ -132,6 +159,10 @@ class TableGet
     {
 
         $name = isset($req['name']) ? sanitize_text_field($req['name']) : '';
+        $name = $name !== '' ? basename($name) : '';
+        if ($name === '.' || $name === '..') {
+            $name = '';
+        }
 
         if ($name) {
             $pattern = false;

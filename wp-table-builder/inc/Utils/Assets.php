@@ -50,7 +50,7 @@ class Assets
     private static function enqueue_config()
     {
         $data = [
-            'API_BASE' => rest_url('wp-table-builder'),
+            'WEB_URL' => get_site_url(),
             'PLUGIN_URL' => WPTB_PLUGIN_URL,
             'HOME_URL' => home_url(),
             'IS_PRO' => WPTableBuilder::is_pro(),

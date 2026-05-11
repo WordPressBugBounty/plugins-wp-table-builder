@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 6.9
-Stable tag: 2.1.13
+Stable tag: 2.1.14
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -13,7 +13,7 @@ Drag and Drop Table Builder Plugin. Build Responsive Tables Easily.
 
 == Description ==
 
-[Plugin Demo](https://wptablebuilder.com/demo-tables/) | [Documentation](https://wptablebuilder.com/docs/) | [Get Pro](https://wptablebuilder.com/pricing/)
+[Plugin Demo](https://wptablebuilder.com/demo-tables/) | [Documentation](https://wptablebuilder.com/docs/) | [Support](https://wptablebuilder.com/support/) | [Tutorials](https://wptablebuilder.com/blog/) | [Get Pro](https://wptablebuilder.com/pricing/)
 
 WP Table Builder is a drag and drop table builder plugin for WordPress. It's insanely easy to create responsive tables with WP Table Builder.
 
@@ -73,6 +73,9 @@ That's it. You're done!
 ## Join Us To Get Updates and Resources
 
 * [Visit WP Table Builder Website](https://wptablebuilder.com/)
+* [Documentation](https://wptablebuilder.com/docs/)
+* [Support](https://wptablebuilder.com/support/)
+* [Tutorials](https://wptablebuilder.com/blog/)
 * [WP Table Builder Support Community](https://wptablebuilder.com/community/)
 * [Follow Us on Twitter](https://twitter.com/wptbplugin)
 * [Join Our Facebook Group](https://www.facebook.com/groups/497986907442780/)
@@ -89,6 +92,15 @@ That's it. You're done!
 8. Responsive Tables.
 
 == Changelog ==
+
+= 2.1.14 =
+* NEW: Content distribution options
+* NEW: Optional "Powered by WP Table Builder" attribution setting
+* IMPROVE: Undo support in radio group controls
+* IMPROVE: Table list search matches table ID and shortcode
+* FIX: Button padding applies correctly to the button background
+* FIX: Security improvements
+* FIX: Issues when site has trailing slash redirection enabled
 
 = 2.1.13 =
 * FIX: Saving link target as same window (This window)

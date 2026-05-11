@@ -6,6 +6,35 @@ use WPTableBuilder\Utils\RenderUtils;
 
 class Table
 {
+    private const POWERED_BY_URL = 'https://wptablebuilder.com/?utm_source=plugin_badge';
+
+    private static function showPoweredByBadge(array $props): bool
+    {
+        if (!empty($props['v2Props'])) {
+            $decoded = base64_decode((string) $props['v2Props'], true);
+            if ($decoded !== false) {
+                $v2 = json_decode($decoded, true);
+                if (is_array($v2) && array_key_exists('showPoweredByBadge', $v2)) {
+                    return filter_var($v2['showPoweredByBadge'], FILTER_VALIDATE_BOOLEAN);
+                }
+            }
+        }
+
+        $legacy = $props['showPoweredByBadge'] ?? false;
+
+        return in_array($legacy, [true, 1, '1', 'true'], true);
+    }
+
+    private static function renderPoweredByBadge(): string
+    {
+        return '<div class="wptb-powered-by-badge" style="margin-top:8px;text-align:right;font-size:11px;font-weight:400;line-height:1.4;">'
+            . '<span style="color:#888780;">Powered by </span>'
+            . '<a href="' . esc_url(self::POWERED_BY_URL) . '" target="_blank" rel="nofollow">'
+            . esc_html__('WP Table Builder', 'wp-table-builder')
+            . '</a>'
+            . '</div>';
+    }
+
     public static function render ($body, $id) {
         $props = $body['props'];
 
@@ -124,6 +153,11 @@ class Table
             $tbody .= '<tr ' . $attrs . ' class="wptb-row ' . $classNames . '" style="' . $style . '">' . $cells . '</tr>';
         }
 
-        return "<table {$attrs_string}><tbody {$tbody_attrs}>{$tbody}</tbody></table>";
+        $tableHtml = "<table {$attrs_string}><tbody {$tbody_attrs}>{$tbody}</tbody></table>";
+        $badgeHtml = self::showPoweredByBadge($props)
+            ? self::renderPoweredByBadge()
+            : '';
+
+        return $tableHtml . $badgeHtml;
     }
 }
