@@ -69,7 +69,7 @@ class RenderUtils
             'thead[class]', 'tbody[class]', 'tfoot[class]', 'tr[class]',
             'td[colspan|rowspan|class]', 'th[colspan|rowspan|scope|class]',
             'colgroup[span|class]', 'col[span|class]',
-            'form[class]', 'input[type|class]', 'textarea[class]', 'select[class]', 'option[class]',
+            'form[class]', 'input[type|class|src|title]', 'textarea[class]', 'select[class]', 'option[class]',
             'fieldset[class]', 'legend[class]',
             'hr[class]',
         ]));

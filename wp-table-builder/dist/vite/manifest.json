@@ -1,48 +1,48 @@
 {
-  "_common-c0qLbiWL.js": {
-    "file": "assets/common-c0qLbiWL.js",
+  "_common-Dh4TvNpr.js": {
+    "file": "assets/common-Dh4TvNpr.js",
     "name": "common",
     "imports": [
-      "_parser-B_2Tw2G1.js"
+      "_parser-BR0fxLaw.js"
     ]
   },
-  "_corruption-CDnCbT17.js": {
-    "file": "assets/corruption-CDnCbT17.js",
+  "_corruption-BzUg4DxK.js": {
+    "file": "assets/corruption-BzUg4DxK.js",
     "name": "corruption",
     "imports": [
-      "_parser-B_2Tw2G1.js"
+      "_parser-BR0fxLaw.js"
     ]
   },
-  "_index-CYYvp0Al.js": {
-    "file": "assets/index-CYYvp0Al.js",
+  "_index-Qh7HnMbo.js": {
+    "file": "assets/index-Qh7HnMbo.js",
     "name": "index",
     "imports": [
-      "_parser-B_2Tw2G1.js",
-      "_corruption-CDnCbT17.js"
+      "_parser-BR0fxLaw.js",
+      "_corruption-BzUg4DxK.js"
     ]
   },
-  "_parser-B_2Tw2G1.js": {
-    "file": "assets/parser-B_2Tw2G1.js",
+  "_parser-BR0fxLaw.js": {
+    "file": "assets/parser-BR0fxLaw.js",
     "name": "parser"
   },
-  "_renderer-Fs_vOr7J.js": {
-    "file": "assets/renderer-Fs_vOr7J.js",
+  "_renderer-DgBCLKX5.js": {
+    "file": "assets/renderer-DgBCLKX5.js",
     "name": "renderer",
     "imports": [
-      "_parser-B_2Tw2G1.js"
+      "_parser-BR0fxLaw.js"
     ]
   },
   "src/editor-common.ts": {
-    "file": "assets/editor-common-D7zcTGE2.js",
+    "file": "assets/editor-common-mHsVmYoE.js",
     "name": "editor-common",
     "src": "src/editor-common.ts",
     "isEntry": true,
     "imports": [
-      "_index-CYYvp0Al.js",
-      "_corruption-CDnCbT17.js",
-      "_renderer-Fs_vOr7J.js",
-      "_common-c0qLbiWL.js",
-      "_parser-B_2Tw2G1.js"
+      "_index-Qh7HnMbo.js",
+      "_corruption-BzUg4DxK.js",
+      "_renderer-DgBCLKX5.js",
+      "_common-Dh4TvNpr.js",
+      "_parser-BR0fxLaw.js"
     ]
   },
   "src/editor.scss": {
@@ -51,35 +51,35 @@
     "isEntry": true
   },
   "src/frontend/common.ts": {
-    "file": "assets/frontend-common-DWWqrIE2.js",
+    "file": "assets/frontend-common-DJ7rj9l2.js",
     "name": "frontend-common",
     "src": "src/frontend/common.ts",
     "isEntry": true,
     "imports": [
-      "_parser-B_2Tw2G1.js",
-      "_common-c0qLbiWL.js"
+      "_parser-BR0fxLaw.js",
+      "_common-Dh4TvNpr.js"
     ]
   },
   "src/frontend/index.ts": {
-    "file": "assets/frontend-script-kC_SBliw.js",
+    "file": "assets/frontend-script-CNwzqDha.js",
     "name": "frontend-script",
     "src": "src/frontend/index.ts",
     "isEntry": true,
     "imports": [
-      "_parser-B_2Tw2G1.js",
-      "_corruption-CDnCbT17.js",
-      "_renderer-Fs_vOr7J.js"
+      "_parser-BR0fxLaw.js",
+      "_corruption-BzUg4DxK.js",
+      "_renderer-DgBCLKX5.js"
     ]
   },
   "src/index.tsx": {
-    "file": "assets/editor-main-DSHeDrkz.js",
+    "file": "assets/editor-main-dojYDeSa.js",
     "name": "editor-main",
     "src": "src/index.tsx",
     "isEntry": true,
     "imports": [
-      "_index-CYYvp0Al.js",
-      "_parser-B_2Tw2G1.js",
-      "_corruption-CDnCbT17.js"
+      "_index-Qh7HnMbo.js",
+      "_parser-BR0fxLaw.js",
+      "_corruption-BzUg4DxK.js"
     ],
     "css": [
       "editor-main.css"
