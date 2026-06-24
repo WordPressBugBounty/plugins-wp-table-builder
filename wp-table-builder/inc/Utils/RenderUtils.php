@@ -69,7 +69,11 @@ class RenderUtils
             'thead[class]', 'tbody[class]', 'tfoot[class]', 'tr[class]',
             'td[colspan|rowspan|class]', 'th[colspan|rowspan|scope|class]',
             'colgroup[span|class]', 'col[span|class]',
-            'form[class]', 'input[type|class|src|title]', 'textarea[class]', 'select[class]', 'option[class]',
+            'form[action|method|target|class]',
+            'input[type|name|value|class|src|title|alt]',
+            'textarea[name|class]',
+            'select[name|class]',
+            'option[value|class|selected]',
             'fieldset[class]', 'legend[class]',
             'hr[class]',
         ]));
@@ -114,12 +118,13 @@ class RenderUtils
         $config->set('Cache.SerializerPath', $cache_path);
 
         $config->set('HTML.DefinitionID', 'wptb-custom');
-        $config->set('HTML.DefinitionRev', 1);
+        $config->set('HTML.DefinitionRev', 4);
 
         if ($def = $config->maybeGetRawHTMLDefinition()) {
             $def->addElement('button', 'Inline', 'Inline', 'Common', [
                 'type' => 'Enum#button,submit,reset',
             ]);
+            $def->addAttribute('form', 'target', new \HTMLPurifier_AttrDef_HTML_FrameTarget());
         }
     
         $purifier = new HTMLPurifier($config);

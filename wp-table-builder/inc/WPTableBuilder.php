@@ -3,8 +3,18 @@
 namespace WPTableBuilder;
 
 use WPTableBuilder\Admin\Api\ApiHandler;
+use WPTableBuilder\BlockProvidor;
+use WPTableBuilder\Blocks\ButtonBlock;
+use WPTableBuilder\Blocks\CustomHtmlBlock;
 use WPTableBuilder\Blocks\Gutenberg;
+use WPTableBuilder\Blocks\ImageBlock;
+use WPTableBuilder\Blocks\ListBlock;
+use WPTableBuilder\Blocks\ListItemBlock;
+use WPTableBuilder\Blocks\ShortcodeBlock;
+use WPTableBuilder\Blocks\StarRatingBlock;
+use WPTableBuilder\Blocks\TextBlock;
 use WPTableBuilder\Core\Cpt;
+use WPTableBuilder\Core\Database\Migration;
 use WPTableBuilder\Utils\Assets;
 use WPTableBuilder\Core\Shortcode;
 use WPTableBuilder\Core\Settings;
@@ -18,10 +28,24 @@ class WPTableBuilder
     {
         wptb_fs();
         do_action('wptb_fs_loaded');
+        Migration::migrate();
+        self::register_blocks();
         Assets::init();
         Gutenberg::init();
         Cpt::init();
         Shortcode::init();
+    }
+
+    private static function register_blocks()
+    {
+        BlockProvidor::registerBlock(TextBlock::class);
+        BlockProvidor::registerBlock(ImageBlock::class);
+        BlockProvidor::registerBlock(ButtonBlock::class);
+        BlockProvidor::registerBlock(StarRatingBlock::class);
+        BlockProvidor::registerBlock(ListBlock::class);
+        BlockProvidor::registerBlock(ListItemBlock::class);
+        BlockProvidor::registerBlock(ShortcodeBlock::class);
+        BlockProvidor::registerBlock(CustomHtmlBlock::class);
     }
 
     public static function admin_init()

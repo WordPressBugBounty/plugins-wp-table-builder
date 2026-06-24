@@ -39,7 +39,23 @@ class SettingsApi
     public static function get_settings($request)
     {
         $settings = Settings::get_all();
+        $settings['ai'] = self::mask_ai_settings($settings['ai'] ?? []);
         return ApiHandler::response($settings);
+    }
+
+    private static function mask_ai_settings($ai)
+    {
+        $vendors = $ai['vendors'] ?? [];
+        $masked = [];
+        foreach ($vendors as $vendor => $cfg) {
+            $key = $cfg['api_key'] ?? '';
+            $masked[$vendor] = [
+                'api_key_set' => $key !== '',
+                'api_key_preview' => $key !== '' ? ('••••' . substr($key, -4)) : '',
+                'enabled_models' => $cfg['enabled_models'] ?? [],
+            ];
+        }
+        return ['vendors' => $masked];
     }
 
     public static function update_settings($request)
@@ -73,12 +89,22 @@ class SettingsApi
             );
         }
 
+        if (isset($updates['ai'])) {
+            $new_settings['ai'] = self::sanitize_ai_settings(
+                $updates['ai'],
+                $current_settings['ai'] ?? []
+            );
+        }
+
         update_option(self::OPTION_NAME, $new_settings);
         Settings::clear_cache();
 
+        $response_settings = $new_settings;
+        $response_settings['ai'] = self::mask_ai_settings($new_settings['ai'] ?? []);
+
         return ApiHandler::response([
             'message' => __('Settings saved successfully.', 'wp-table-builder'),
-            'settings' => $new_settings
+            'settings' => $response_settings
         ]);
     }
 
@@ -179,6 +205,37 @@ class SettingsApi
         }
 
         return $sanitized;
+    }
+
+    private static function sanitize_ai_settings($updates, $current)
+    {
+        $known_vendors = ['anthropic', 'openai', 'google'];
+        $vendors = $current['vendors'] ?? [];
+
+        foreach ($known_vendors as $vendor) {
+            $update = $updates['vendors'][$vendor] ?? null;
+            if ($update === null) {
+                continue;
+            }
+
+            if (!isset($vendors[$vendor])) {
+                $vendors[$vendor] = ['api_key' => '', 'enabled_models' => []];
+            }
+
+            if (!empty($update['remove_api_key'])) {
+                $vendors[$vendor]['api_key'] = '';
+            } elseif (isset($update['api_key']) && $update['api_key'] !== '') {
+                $vendors[$vendor]['api_key'] = sanitize_text_field(trim($update['api_key']));
+            }
+
+            if (isset($update['enabled_models']) && is_array($update['enabled_models'])) {
+                $vendors[$vendor]['enabled_models'] = array_values(
+                    array_filter(array_map('sanitize_text_field', $update['enabled_models']))
+                );
+            }
+        }
+
+        return ['vendors' => $vendors];
     }
 
     public static function get_all_settings()

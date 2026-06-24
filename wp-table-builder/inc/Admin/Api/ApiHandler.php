@@ -19,6 +19,7 @@ class ApiHandler
         Tags::register(self::ROUTE_NAMESPACE);
         SettingsApi::register(self::ROUTE_NAMESPACE);
         Export::register(self::ROUTE_NAMESPACE);
+        AiApi::register(self::ROUTE_NAMESPACE);
     }
 
 

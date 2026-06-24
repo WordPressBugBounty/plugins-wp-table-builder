@@ -12,37 +12,59 @@ class Settings
 
     private static $user_has_role = null;
 
+    private static function get_defaults(): array
+    {
+        return [
+            'general' => [
+                'allowed_roles' => [],
+                'display_edit_link_frontend' => false,
+                'display_credits' => false,
+                'restrict_users_to_their_tables' => false,
+                'disable_emoji_image_conversion' => false,
+                'disable_theme_styles' => false,
+                'sidebar_position' => 'left',
+                'take_over_entire_screen' => false,
+                'enable_version_sync' => false,
+            ],
+            'global_styles' => '',
+            'ai' => [
+                'vendors' => [
+                    'anthropic' => ['api_key' => '', 'enabled_models' => []],
+                    'openai'    => ['api_key' => '', 'enabled_models' => []],
+                    'google'    => ['api_key' => '', 'enabled_models' => []],
+                ],
+            ],
+            'lazy_load' => [
+                'enabled' => false,
+                'visibilityPercentage' => '50',
+                'backgroundColor' => '',
+                'iconName' => null,
+                'iconColor' => '',
+                'iconSize' => '32',
+                'iconAnimation' => 'none',
+                'imageLoadAnimation' => 'none',
+                'imageLoadAnimationDirection' => 'left',
+                'imageLoadAnimationSpeed' => '5',
+                'imageLoadAnimationPerspective' => '400',
+                'flashColor' => ''
+            ],
+        ];
+    }
+
     public static function get_all()
     {
         if (!self::$is_loaded) {
-            self::$cache = get_option(self::OPTION_NAME, [
-                'general' => [
-                    'allowed_roles' => [],
-                    'display_edit_link_frontend' => false,
-                    'display_credits' => false,
-                    'restrict_users_to_their_tables' => false,
-                    'disable_emoji_image_conversion' => false,
-                    'disable_theme_styles' => false,
-                    'sidebar_position' => 'left',
-                    'take_over_entire_screen' => false,
-                    'enable_version_sync' => false,
-                ],
-                'global_styles' => '',
-                'lazy_load' => [
-                    'enabled' => false,
-                    'visibilityPercentage' => '50',
-                    'backgroundColor' => '',
-                    'iconName' => null,
-                    'iconColor' => '',
-                    'iconSize' => '32',
-                    'iconAnimation' => 'none',
-                    'imageLoadAnimation' => 'none',
-                    'imageLoadAnimationDirection' => 'left',
-                    'imageLoadAnimationSpeed' => '5',
-                    'imageLoadAnimationPerspective' => '400',
-                    'flashColor' => ''
-                ],
-            ]);
+            $stored = get_option(self::OPTION_NAME, []);
+            self::$cache = array_merge(self::get_defaults(), $stored);
+            // Ensure the ai key and vendor sub-keys are always present.
+            if (!isset(self::$cache['ai']['vendors'])) {
+                self::$cache['ai'] = self::get_defaults()['ai'];
+            }
+            foreach (['anthropic', 'openai', 'google'] as $vendor) {
+                if (!isset(self::$cache['ai']['vendors'][$vendor])) {
+                    self::$cache['ai']['vendors'][$vendor] = ['api_key' => '', 'enabled_models' => []];
+                }
+            }
             self::$is_loaded = true;
         }
 
@@ -69,6 +91,17 @@ class Settings
     public static function get_styles()
     {
         return self::get('global_styles', '');
+    }
+
+    public static function get_ai($key = null, $default = null)
+    {
+        $ai = self::get('ai', []);
+
+        if ($key === null) {
+            return $ai;
+        }
+
+        return $ai[$key] ?? $default;
     }
 
     public static function get_lazy_load($key = null, $default = null)
