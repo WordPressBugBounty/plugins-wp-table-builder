@@ -14,7 +14,6 @@ use WPTableBuilder\Blocks\ShortcodeBlock;
 use WPTableBuilder\Blocks\StarRatingBlock;
 use WPTableBuilder\Blocks\TextBlock;
 use WPTableBuilder\Core\Cpt;
-use WPTableBuilder\Core\Database\Migration;
 use WPTableBuilder\Utils\Assets;
 use WPTableBuilder\Core\Shortcode;
 use WPTableBuilder\Core\Settings;
@@ -28,7 +27,6 @@ class WPTableBuilder
     {
         wptb_fs();
         do_action('wptb_fs_loaded');
-        Migration::migrate();
         self::register_blocks();
         Assets::init();
         Gutenberg::init();

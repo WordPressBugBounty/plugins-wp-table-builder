@@ -66,33 +66,16 @@ class Assets
 
     private static function get_settings_config()
     {
-        return [
+        // The `ai` key is injected by the PRO add-on via this filter
+        // (see WPTableBuilderPro::add_ai_config). It is absent in the free plugin.
+        return apply_filters('wptb_settings_config', [
             'all_roles' => Settings::get_editable_roles(),
             'is_authorized' => Settings::is_user_allowed(),
             'version' => WPTB_VERSION,
             'general' => Settings::get_general(),
             'table_style' => Settings::get_styles(),
             'lazy_load' => Settings::get_lazy_load(),
-            'ai' => self::get_ai_config(),
-        ];
-    }
-
-    private static function get_ai_config()
-    {
-        $ai = Settings::get_ai();
-        $vendors = $ai['vendors'] ?? [];
-        $masked = [];
-
-        foreach ($vendors as $vendor => $cfg) {
-            $key = $cfg['api_key'] ?? '';
-            $masked[$vendor] = [
-                'api_key_set' => $key !== '',
-                'api_key_preview' => $key !== '' ? ('••••' . substr($key, -4)) : '',
-                'enabled_models' => $cfg['enabled_models'] ?? [],
-            ];
-        }
-
-        return ['vendors' => $masked];
+        ]);
     }
 
     private static function enqueue_i18n()
