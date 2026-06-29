@@ -13,8 +13,8 @@
       "_parser-BjLl6_yf.js"
     ]
   },
-  "_index-Br1KU_yL.js": {
-    "file": "assets/index-Br1KU_yL.js",
+  "_index-Dvj4K8gR.js": {
+    "file": "assets/index-Dvj4K8gR.js",
     "name": "index",
     "imports": [
       "_parser-BjLl6_yf.js",
@@ -33,12 +33,12 @@
     ]
   },
   "src/editor-common.ts": {
-    "file": "assets/editor-common-C9XXQGFq.js",
+    "file": "assets/editor-common-BMW_ZkLF.js",
     "name": "editor-common",
     "src": "src/editor-common.ts",
     "isEntry": true,
     "imports": [
-      "_index-Br1KU_yL.js",
+      "_index-Dvj4K8gR.js",
       "_corruption-Bzh_DlPe.js",
       "_renderer-BQ-Z36iF.js",
       "_common-CIQc5GQ4.js",
@@ -72,12 +72,12 @@
     ]
   },
   "src/index.tsx": {
-    "file": "assets/editor-main-DgrWbLua.js",
+    "file": "assets/editor-main-zW1pmgAG.js",
     "name": "editor-main",
     "src": "src/index.tsx",
     "isEntry": true,
     "imports": [
-      "_index-Br1KU_yL.js",
+      "_index-Dvj4K8gR.js",
       "_parser-BjLl6_yf.js",
       "_corruption-Bzh_DlPe.js"
     ],
