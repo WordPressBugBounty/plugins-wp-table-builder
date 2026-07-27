@@ -119,6 +119,21 @@ class Table
             "data-global-font-size" => $props['fontSize'] ?? false,
         ]);
 
+        // Resolve the sticky row index (1-based) from v2Props, falling back to the legacy boolean.
+        $stickyRowIndex = null;
+        if (!empty($props['v2Props'])) {
+            $decoded = base64_decode((string) $props['v2Props'], true);
+            if ($decoded !== false) {
+                $v2 = json_decode($decoded, true);
+                if (is_array($v2) && isset($v2['sticky']['row'])) {
+                    $stickyRowIndex = (int) $v2['sticky']['row'];
+                }
+            }
+        }
+        if ($stickyRowIndex === null && ($props['stickyTopRow'] ?? false)) {
+            $stickyRowIndex = 1;
+        }
+
         $tbody = "";
 
         foreach ($body['rows'] as $i => $row) {
@@ -128,7 +143,8 @@ class Table
             }
             $classNames = isset($row['props']['highlighted']) ? 'wptb-row-highlighted-' . esc_attr($row['props']['highlighted']) : '';
             $attrs = "";
-            if ($props['stickyTopRow'] ?? false && $i == 0) {
+            // $i is 0-based; stickyRowIndex is 1-based.
+            if ($stickyRowIndex !== null && ($i + 1) === $stickyRowIndex) {
                 $attrs = 'data-wptb-sticky-row="true"';
             }
             $hoverColor = '';

@@ -28,6 +28,9 @@ class Assets
         wp_enqueue_media();
 
         self::enqueue_i18n();
+        if (!$is_block_editor) {
+            self::enqueue_font_faces();
+        }
 
         $assets = AssetLoader::backend(self::CDN_HOST, WPTB_PLUGIN_DIR . '/dist/vite/manifest.json', WPTB_PLUGIN_DIR . '/tmp/.hotfile');
 
@@ -56,12 +59,21 @@ class Assets
             'IS_PRO' => WPTableBuilder::is_pro(),
             'TEST' => __("Create Table", "wptb"),
             'SETTINGS' => self::get_settings_config(),
+            'FONT_FAMILIES' => Fonts::get_font_families(),
             'NONCE' => [
                 'wp_rest' => wp_create_nonce('wp_rest'),
             ],
         ];
 
         echo '<script type="text/javascript">var WPTB_CFG = ' . json_encode($data) . ';</script>';
+    }
+
+    private static function enqueue_font_faces()
+    {
+        if (!function_exists('wp_print_font_faces')) {
+            return;
+        }
+        wp_print_font_faces();
     }
 
     private static function get_settings_config()

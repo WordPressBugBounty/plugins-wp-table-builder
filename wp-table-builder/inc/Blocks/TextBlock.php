@@ -2,6 +2,8 @@
 
 namespace WPTableBuilder\Blocks;
 
+use WPTableBuilder\Utils\Fonts;
+
 class TextBlock implements BaseBlock
 {
     public static function getTitle(): string
@@ -16,6 +18,8 @@ class TextBlock implements BaseBlock
 
     public static function getAISchema(): string
     {
+        $fontFamily = Fonts::get_ai_allowed_values();
+
         return <<<AI_SCHEMA
         Props:
 
@@ -24,6 +28,7 @@ class TextBlock implements BaseBlock
 
         typography:
         - `props.fontSize`: CSS font-size (e.g. `"1em"`, `"16px"`); omit to inherit from table
+        - `props.fontFamily`: {$fontFamily}
         - `props.color`: CSS text color (hex/rgb); omit to inherit from table
         - `props.linkColor`: CSS color for anchor tags inside the text
         - `props.align`: `"left"` | `"right"` | `"center"` | `"justify"`

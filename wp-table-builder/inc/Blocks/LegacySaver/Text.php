@@ -15,6 +15,7 @@ class Text
         $style = RenderUtils::generate_css_string([
             "color" => $attrs['color'] ?? '',
             "font-size" => $attrs['fontSize'] ?? '',
+            "font-family" => $attrs['fontFamily'] ?? '',
             "padding" => $attrs['padding'] ?? '',
             "margin" => $attrs['margin'] ?? '',
         ]);

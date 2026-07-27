@@ -92,6 +92,13 @@ class RenderUtils
             '_top'    => true,
         ]);
 
+        $config->set('Attr.AllowedRel', [
+            'nofollow'    => true,
+            'noopener'    => true,
+            'noreferrer'  => true,
+            'sponsored'   => true,
+        ]);
+
         $config->set('HTML.SafeIframe', true);
     
         $config->set('URI.SafeIframeRegexp', 
