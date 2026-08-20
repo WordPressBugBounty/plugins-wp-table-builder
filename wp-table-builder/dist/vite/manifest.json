@@ -13,8 +13,8 @@
       "_parser-DjQZlMd1.js"
     ]
   },
-  "_index-DuoZccPQ.js": {
-    "file": "assets/index-DuoZccPQ.js",
+  "_index-DzOQuJic.js": {
+    "file": "assets/index-DzOQuJic.js",
     "name": "index",
     "imports": [
       "_parser-DjQZlMd1.js",
@@ -33,12 +33,12 @@
     ]
   },
   "src/editor-common.ts": {
-    "file": "assets/editor-common-CacgVC4F.js",
+    "file": "assets/editor-common-DES6zaBz.js",
     "name": "editor-common",
     "src": "src/editor-common.ts",
     "isEntry": true,
     "imports": [
-      "_index-DuoZccPQ.js",
+      "_index-DzOQuJic.js",
       "_corruption-CN_FuuhI.js",
       "_renderer-OUrS6wV-.js",
       "_common-obr_iRFg.js",
@@ -72,17 +72,14 @@
     ]
   },
   "src/index.tsx": {
-    "file": "assets/editor-main-DRle4-6R.js",
+    "file": "assets/editor-main-dd4_FN_l.js",
     "name": "editor-main",
     "src": "src/index.tsx",
     "isEntry": true,
     "imports": [
-      "_index-DuoZccPQ.js",
+      "_index-DzOQuJic.js",
       "_parser-DjQZlMd1.js",
       "_corruption-CN_FuuhI.js"
-    ],
-    "css": [
-      "editor-main.css"
     ]
   },
   "src/public/i18n.ts": {

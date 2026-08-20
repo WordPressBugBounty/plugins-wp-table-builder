@@ -69,7 +69,9 @@ class Cpt
             return;
         }
 
-        if (!Settings::user_has_role()) {
+        $table_id = absint($_GET['p'] ?? 0);
+
+        if (!Settings::is_user_allowed($table_id)) {
             wp_die('You are not allowed to preview this table.', 'Access Denied', ['response' => 403]);
             return;
         }
@@ -84,10 +86,14 @@ class Cpt
     public static function filter_preview_content($content)
     {
 
-        $table_id = intval($_GET['p']);
+        $table_id = absint($_GET['p'] ?? 0);
         $table = get_post($table_id);
         if (!$table || $table->post_type !== self::POST_TYPE) {
             wp_die('Table not found', 'Table Not Found', ['response' => 404]);
+        }
+
+        if (!Settings::is_user_allowed($table_id)) {
+            wp_die('You are not allowed to preview this table.', 'Access Denied', ['response' => 403]);
         }
         
         $post_preview_id = get_post_meta($table_id, '_wptb_preview_id_', true);

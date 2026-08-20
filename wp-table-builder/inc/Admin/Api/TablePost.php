@@ -46,6 +46,12 @@ class TablePost
             'permission_callback' => [Authorization::class, 'can_edit'],
         ]);
 
+        register_rest_route($apiBase, '/delete_bulk', [
+            'methods' => 'POST',
+            'callback' => [self::class, 'delete_table_bulk'],
+            'permission_callback' => [Authorization::class, 'can_edit'],
+        ]);
+
         register_rest_route($apiBase, '/save', [
             'methods' => 'POST',
             'callback' => [self::class, 'save_table'],
@@ -68,9 +74,15 @@ class TablePost
             return ApiHandler::response(['message' => 'You are not allowed to save this table.'], 403);
         }
 
+        $decoded = json_decode($content, true);
+
+        if (!is_array($decoded) || !isset($decoded['props'])) {
+            return ApiHandler::response(['message' => 'Table content is malformed.'], 400);
+        }
+
         try {
-            $content = Table::render(json_decode($content, true), $id ?? 'startedid-0');
-        } catch (\Exception $e) {
+            $content = Table::render($decoded, $id ?? 'startedid-0');
+        } catch (\Throwable $e) {
             return ApiHandler::response(['message' => $e->getMessage()], 500);
         }
 
@@ -215,6 +227,10 @@ class TablePost
 
         $id = absint($data['id']);
 
+        if (!Authorization::can_view_table($id)) {
+            return ApiHandler::response(['message' => 'You are not allowed to duplicate this table.'], 403);
+        }
+
         $duplicated = self::duplicate_table_internal($id);
         if ($duplicated) {
             return [
@@ -231,6 +247,9 @@ class TablePost
     public static function trash_table($req)
     {
         $id = absint($req->get_json_params()['id'] ?? 0);
+        if (!Authorization::can_edit_table($id)) {
+            return ApiHandler::response(['message' => 'You are not allowed to trash this table.'], 403);
+        }
         if (get_post_type($id) === Cpt::POST_TYPE) {
             wp_trash_post($id);
             return [
@@ -242,6 +261,9 @@ class TablePost
     public static function restore_table($req)
     {
         $id = absint($req->get_json_params()['id'] ?? 0);
+        if (!Authorization::can_edit_table($id)) {
+            return ApiHandler::response(['message' => 'You are not allowed to restore this table.'], 403);
+        }
         if (get_post_type($id) === Cpt::POST_TYPE) {
             wp_untrash_post($id);
             return [
@@ -254,6 +276,9 @@ class TablePost
     public static function delete_permanently($req)
     {
         $id = absint($req->get_json_params()['id'] ?? 0);
+        if (!Authorization::can_edit_table($id)) {
+            return ApiHandler::response(['message' => 'You are not allowed to delete this table.'], 403);
+        }
         if (get_post_type($id) === Cpt::POST_TYPE) {
             wp_delete_post($id);
             return [
@@ -268,6 +293,11 @@ class TablePost
         global $wpdb;
         $json = $request->get_json_params();
         $post_ids = $json['ids'] ?? [];
+
+        if (!Authorization::can_view_tables($post_ids)) {
+            return ApiHandler::response(['message' => 'You are not allowed to duplicate one or more of these tables.'], 403);
+        }
+
         $wpdb->query('START TRANSACTION');
         $posts = [];
         foreach ($post_ids as $post_id) {
@@ -290,6 +320,11 @@ class TablePost
         global $wpdb;
         $json = $req->get_json_params();
         $post_ids = $json['ids'] ?? [];
+
+        if (!Authorization::can_edit_tables($post_ids)) {
+            return ApiHandler::response(['message' => 'You are not allowed to trash one or more of these tables.'], 403);
+        }
+
         $wpdb->query('START TRANSACTION');
         foreach ($post_ids as $id) {
             if (get_post_type($id) !== Cpt::POST_TYPE) {
@@ -309,6 +344,11 @@ class TablePost
         global $wpdb;
         $json = $req->get_json_params();
         $post_ids = $json['ids'] ?? [];
+
+        if (!Authorization::can_edit_tables($post_ids)) {
+            return ApiHandler::response(['message' => 'You are not allowed to restore one or more of these tables.'], 403);
+        }
+
         $wpdb->query('START TRANSACTION');
         foreach ($post_ids as $id) {
             if (get_post_type($id) !== Cpt::POST_TYPE) {
@@ -320,6 +360,30 @@ class TablePost
         $wpdb->query('COMMIT');
         return ApiHandler::response([
             'message' => 'Table(s) restored successfully.',
+        ]);
+    }
+
+    public static function delete_table_bulk($req)
+    {
+        global $wpdb;
+        $json = $req->get_json_params();
+        $post_ids = $json['ids'] ?? [];
+
+        if (!Authorization::can_edit_tables($post_ids)) {
+            return ApiHandler::response(['message' => 'You are not allowed to delete one or more of these tables.'], 403);
+        }
+
+        $wpdb->query('START TRANSACTION');
+        foreach ($post_ids as $id) {
+            if (get_post_type($id) !== Cpt::POST_TYPE) {
+                $wpdb->query('ROLLBACK');
+                return ApiHandler::response(['message' => 'Failed to delete table(s).']);
+            }
+            wp_delete_post($id, true);
+        }
+        $wpdb->query('COMMIT');
+        return ApiHandler::response([
+            'message' => 'Table(s) deleted permanently.',
         ]);
     }
 }

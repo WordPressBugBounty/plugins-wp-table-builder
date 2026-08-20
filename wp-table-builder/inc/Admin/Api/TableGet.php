@@ -4,6 +4,7 @@ namespace WPTableBuilder\Admin\Api;
 use WP_Query;
 use WPTableBuilder\Admin\Authorization;
 use WPTableBuilder\Core\Cpt;
+use WPTableBuilder\Core\Settings;
 use WPTableBuilder\WPTableBuilder;
 
 class TableGet
@@ -33,6 +34,11 @@ class TableGet
     public static function get_table($req)
     {
         $id = absint($req->get_param('id'));
+
+        if (!Authorization::can_view_table($id)) {
+            return ApiHandler::response(['message' => 'You are not allowed to view this table.'], 403);
+        }
+
         $post = get_post($id);
         $table = get_post_meta($id, '_wptb_content_', true);
         $is_template = get_post_meta($id, '_wptb_prebuilt_', true) ? true : false;
@@ -82,14 +88,14 @@ class TableGet
         }
 
 
-        $args = [
+        $args = Settings::apply_table_ownership_query_args([
             'post_type' => 'wptb-tables',
             'posts_per_page' => $per_page,
             'paged' => $page,
             'post_status' => $status,
             'orderby' => $sort_by,
             'order' => $sort_order,
-        ];
+        ]);
 
         $posts_where_filter = function ($where, $query) use ($search_term, $except) {
             global $wpdb;

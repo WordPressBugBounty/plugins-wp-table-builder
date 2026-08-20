@@ -3,7 +3,7 @@
         'name' => 'dotcamp/wp-table-builder',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'df4fc856fbed4fe81d11a7a23fdff3a70e49fa55',
+        'reference' => '9e77a82a9c05c4e81937c9aa825287c5affc51c8',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'dotcamp/wp-table-builder' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'df4fc856fbed4fe81d11a7a23fdff3a70e49fa55',
+            'reference' => '9e77a82a9c05c4e81937c9aa825287c5affc51c8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -147,6 +147,12 @@ class Settings
             return false;
         }
 
+        return self::user_owns_table($id);
+    }
+
+
+    public static function user_owns_table($id = 0)
+    {
         if (!$id || !self::should_restrict_users_to_own_tables()) {
             return true;
         }
@@ -156,7 +162,16 @@ class Settings
             return false;
         }
 
-        return $post->post_author === get_current_user_id();
+        return (int) $post->post_author === (int) get_current_user_id();
+    }
+
+    public static function apply_table_ownership_query_args(array $args)
+    {
+        if (self::should_restrict_users_to_own_tables() && !current_user_can('manage_options')) {
+            $args['author'] = get_current_user_id();
+        }
+
+        return $args;
     }
 
     public static function should_display_edit_link_frontend()

@@ -58,6 +58,10 @@ class Export
             return ApiHandler::response(['message' => __('No valid table IDs provided', 'wp-table-builder')], 400);
         }
 
+        if (!Authorization::can_view_tables($table_ids)) {
+            return ApiHandler::response(['message' => __('You are not allowed to export one or more of these tables', 'wp-table-builder')], 403);
+        }
+
         $file_extension = self::EXPORT_TYPES[$export_type];
 
         if (count($table_ids) > 1) {
