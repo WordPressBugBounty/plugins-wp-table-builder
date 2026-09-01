@@ -110,9 +110,7 @@ class Button
                             <div class="wptb-button-label-decorator" {$hoverAttrs} style="border-color: rgba(0, 0, 0, 0) {$labelBg} rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);">
                                 <br />
                             </div>
-                            <div class="wptb-button-label-text" {$hoverAttrs}>
-                                {$labelText}
-                            </div>
+                            <div class="wptb-button-label-text" {$hoverAttrs}>{$labelText}</div>
                         </div>
                     </div>
                 </{$lTag}>

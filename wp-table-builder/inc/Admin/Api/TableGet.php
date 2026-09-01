@@ -40,18 +40,19 @@ class TableGet
         }
 
         $post = get_post($id);
+
+        if (!$post || $post->post_type !== Cpt::POST_TYPE) {
+            return ApiHandler::response(['message' => 'Table not found.'], 404);
+        }
+
         $table = get_post_meta($id, '_wptb_content_', true);
         $is_template = get_post_meta($id, '_wptb_prebuilt_', true) ? true : false;
-        $name = '';
+        $name = $post->post_title;
         $tags = [];
-        if ($post) {
-            $name = $post->post_title;
-            $terms = wp_get_post_terms($id, Cpt::TAX_ID);
-            $tags = [];
-            foreach ($terms as $term) {
-                $tags[] = $term->term_id;
-            }
+        foreach (wp_get_post_terms($id, Cpt::TAX_ID) as $term) {
+            $tags[] = $term->term_id;
         }
+
         return ApiHandler::response(compact('table', 'name', 'tags', 'is_template'));
     }
 

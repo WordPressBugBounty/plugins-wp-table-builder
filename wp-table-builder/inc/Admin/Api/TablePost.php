@@ -74,6 +74,10 @@ class TablePost
             return ApiHandler::response(['message' => 'You are not allowed to save this table.'], 403);
         }
 
+        if ($id && get_post_type($id) !== Cpt::POST_TYPE) {
+            return ApiHandler::response(['message' => 'Table not found.'], 404);
+        }
+
         $decoded = json_decode($content, true);
 
         if (!is_array($decoded) || !isset($decoded['props'])) {
@@ -183,7 +187,7 @@ class TablePost
     private static function duplicate_table_internal($id)
     {
         $post = get_post($id);
-        if (!$post) {
+        if (!$post || $post->post_type !== Cpt::POST_TYPE) {
             return 404;
         }
 
@@ -232,16 +236,16 @@ class TablePost
         }
 
         $duplicated = self::duplicate_table_internal($id);
-        if ($duplicated) {
-            return [
-                'message' => 'Table duplicated successfully.',
-                'posts' => [
-                    $duplicated
-                ]
-            ];
+        if (!is_array($duplicated)) {
+            return ApiHandler::response(['message' => 'Failed to duplicate table.'], $duplicated);
         }
 
-        return ApiHandler::response(['message' => 'Failed to duplicate table.'], 500);
+        return [
+            'message' => 'Table duplicated successfully.',
+            'posts' => [
+                $duplicated
+            ]
+        ];
     }
 
     public static function trash_table($req)

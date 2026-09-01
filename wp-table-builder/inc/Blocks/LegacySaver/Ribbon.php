@@ -16,9 +16,7 @@ class Ribbon
         <div class="wptb-ribbon_element-container wptb-ph-element wptb-element-ribbon_element-{$element_id}" style="{$style}" {$attrs}>
             <div id="wptbRibbonMainWrap" class="wptb-element-ribbon-wrapper" style="">
                 <div id="wptbRibbonTextWrap" class="wptb-element-ribbon-inner wptb-ribbon-type-rectangle-text-wrap wptb-plugin-box-shadow-md" style="background-color: {$bgColor}; border-color: {$borderColor}">
-                    <p style="width: auto; font-size: {$fontSize}; position: relative" class="wptb-element-ribbon-text">
-                        {$text}
-                    </p>
+                    <p style="width: auto; font-size: {$fontSize}; position: relative" class="wptb-element-ribbon-text">{$text}</p>
                 </div>
                 <div class="wptb-element-ribbon-color-dump" style="background-color: {$bgColor}; border-color: {$borderColor}"></div>
                 <div id="wptbRibbonIconDump" style="display: none" data-wptb-ribbon-icon-animation-type="beat" data-wptb-ribbon-icon-src="star">
@@ -41,9 +39,7 @@ class Ribbon
         <div class="wptb-ribbon_element-container wptb-ph-element wptb-element-ribbon_element-{$element_id}" style="{$style}" {$attrs}>
             <div id="wptbRibbonMainWrap" class="wptb-element-ribbon-wrapper wptb-ribbon-bookmark-main-wrap wptb-plugin-filter-box-shadow-md" style="width: {$width}px">
                 <div id="wptbRibbonTextWrap" class="wptb-element-ribbon-inner" style="background-color: {$bgColor}">
-                    <p style="width: auto; font-size: {$fontSize}; position: relative" class="wptb-element-ribbon-text">
-                        {$text}
-                    </p>
+                    <p style="width: auto; font-size: {$fontSize}; position: relative" class="wptb-element-ribbon-text">{$text}</p>
                 </div>
                 <div class="wptb-element-ribbon-color-dump" style="background-color: {$bgColor}; border-color: {$borderColor}"></div>
                 <div id="wptbRibbonIconDump" style="display: none" data-wptb-ribbon-icon-animation-type="beat" data-wptb-ribbon-icon-src="star">
@@ -77,9 +73,7 @@ class Ribbon
         <div class="wptb-ribbon_element-container wptb-ph-element wptb-element-ribbon_element-{$element_id}" style="{$style}" {$attrs}>
             '<div id="wptbRibbonMainWrap" class="wptb-element-ribbon-wrapper wptb-ribbon-corner-main-wrap" style="">' .
                 '<div id="wptbRibbonTextWrap" class="wptb-element-ribbon-inner wptb-plugin-filter-box-shadow-md-close" style="background-color: {$bgColor};border-color: {$borderColor};transform: {$sideStyle}">
-                    <p style="width: 200px;font-size: 15px;position: relative;text-align: center;" class="wptb-element-ribbon-text">
-                        {$text}
-                    </p>
+                    <p style="width: 200px;font-size: 15px;position: relative;text-align: center;" class="wptb-element-ribbon-text">{$text}</p>
                 </div>
                 <div class="wptb-element-ribbon-color-dump" style="background-color: {$bgColor}; border-color: {$borderColor}"></div>
                 <div id="wptbRibbonIconDump" style="display: none" data-wptb-ribbon-icon-animation-type="beat" data-wptb-ribbon-icon-src="star">
@@ -114,9 +108,7 @@ class Ribbon
         <div class="wptb-ribbon_element-container wptb-ph-element wptb-element-ribbon_element-{$element_id}" style="{$style}" {$attrs}>
             <div id="wptbRibbonMainWrap" class="wptb-element-ribbon-wrapper wptb-ribbon-icon01-main-wrap{$sideClass}">
                 <div id="wptbRibbonTextWrap" class="wptb-element-ribbon-inner wptb-ribbon-icon01-text-wrap wptb-plugin-filter-box-shadow-md">
-                    <p style="width: auto;font-size: {$fontSize};position: relative;background-color: {$bgColor};" class="wptb-element-ribbon-text">
-                        {$text}
-                    </p>
+                    <p style="width: auto;font-size: {$fontSize};position: relative;background-color: {$bgColor};" class="wptb-element-ribbon-text">{$text}</p>
                     <div class="wptb-ribbon-icon01-triangle-end" style="border-right: 20px solid transparent;border-bottom: 88px solid {$bgColor};"></div>
                 </div>
                 <div class="wptb-element-ribbon-color-dump" style="background-color: {$bgColor}; border-color: rgb(0, 0, 0)"></div>
@@ -148,9 +140,7 @@ class Ribbon
         <div class="wptb-ribbon_element-container wptb-ph-element wptb-element-ribbon_element-{$element_id} wptb-ribbon-side-fix" style="{$style}" {$attrs}>
             <div id="wptbRibbonMainWrap" class="wptb-element-ribbon-wrapper wptb-ribbon-sideFancy-main-wrap{$sideClass}" style="">
                 <div id="wptbRibbonTextWrap" class="wptb-element-ribbon-inner wptb-ribbon-sideFancy-text-wrap wptb-plugin-filter-box-shadow-md" style="background-color: {$bgColor}; border-color: {$borderColor}">
-                    <p style="width: auto; font-size: 15px; position: relative" class="wptb-element-ribbon-text">
-                        {$text}
-                    </p>
+                    <p style="width: auto; font-size: 15px; position: relative" class="wptb-element-ribbon-text">{$text}</p>
                 </div>
                 <div class="wptb-element-ribbon-color-dump" style="background-color: {$bgColor}; border-color: {$borderColor}"></div>
                 <div id="wptbRibbonIconDump" style="display: none" data-wptb-ribbon-icon-animation-type="beat" data-wptb-ribbon-icon-src="star" class="" data-enable-animation="1">

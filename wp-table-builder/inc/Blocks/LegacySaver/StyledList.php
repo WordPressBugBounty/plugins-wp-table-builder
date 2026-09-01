@@ -59,13 +59,9 @@ class StyledList
                         {$itemIcon}
                     </div>
                     <div class="wptb-styled-list-item-content" style="position: relative">
-                        <p data-styled_list-marker="" style="{$itemTxtStyle}">
-                            {$text}
-                        </p>
+                        <p data-styled_list-marker="" style="{$itemTxtStyle}">{$text}</p>
                     </div>
-                    <div class="wptb-m-tooltip" style="{$ttStyle}">
-                        {$toolTip}
-                    </div>
+                    <div class="wptb-m-tooltip" style="{$ttStyle}">{$toolTip}</div>
                 </div>
                 <div class="wptb-clear-both"></div>
             </li>
