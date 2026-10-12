@@ -60,14 +60,6 @@ class CircleRating
                 </div>
             </div>
         </div>
-            <div class="wptb-rating-circle-wrapper" style="font-size: {$size}">
-                <span style="color: {$color}">{$value}{$unit}</span>
-                <div class="wptb-rating-circle-slice" style="clip: {$clip}">
-                    <div class="wptb-rating-circle-bar" style="border-color: {$color}; transform: rotate({$barAngle}deg)"></div>
-                    <div class="wptb-rating-circle-fill" style="border-color: {$color}; transform: rotate({$angle}deg);"></div>
-                </div>
-            </div>
-        </div>
         HTML;
     }
 }

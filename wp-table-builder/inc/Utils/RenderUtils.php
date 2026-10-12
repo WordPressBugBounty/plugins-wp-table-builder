@@ -12,7 +12,7 @@ class RenderUtils
         $css_string = '';
 
         foreach ($styles as $key => $value) {
-            if (trim($value) !== '') {
+            if ($value !== null && trim((string) $value) !== '') {
                 $css_string .= $key . ': ' . $value . '; ';
             }
         }
@@ -53,15 +53,15 @@ class RenderUtils
         if (!$html) {
             return '';
         }
-    
+
         $config = HTMLPurifier_Config::createDefault();
-    
+
         $config->set('HTML.Allowed', implode(',', [
             'b[class]', 'strong[class]', 'i[class]', 'em[class]', 'u[class]', 's[class]',
             'p[class|style]', 'br',
             'ul[class]', 'ol[class]', 'li[class]',
             'span[class]',
-            'a[href|target|rel|class|style]', 
+            'a[href|target|rel|class|style]',
             'button[type|class]', 'div[class]',
             'iframe[src|width|height|frameborder|allowfullscreen|class]',
             'img[src|width|height|class]',
@@ -77,7 +77,7 @@ class RenderUtils
             'fieldset[class]', 'legend[class]',
             'hr[class]',
         ]));
-    
+
         $config->set('URI.AllowedSchemes', [
             'http'   => true,
             'https'  => true,
@@ -100,14 +100,12 @@ class RenderUtils
         ]);
 
         $config->set('HTML.SafeIframe', true);
-    
-        $config->set('URI.SafeIframeRegexp', 
+
+        $config->set('URI.SafeIframeRegexp',
             '#^https://(www\.)?(youtube\.com/embed/|youtube-nocookie\.com/embed/)#'
         );
-        
-        $config->set('CSS.AllowedProperties', ['text-align', 'font-size', 'color']);
 
-        $config->set('HTML.TargetBlank', true);
+        $config->set('CSS.AllowedProperties', ['text-align', 'font-size', 'color']);
 
         $config->set('HTML.Forms', true);
 
@@ -125,17 +123,18 @@ class RenderUtils
         $config->set('Cache.SerializerPath', $cache_path);
 
         $config->set('HTML.DefinitionID', 'wptb-custom');
-        $config->set('HTML.DefinitionRev', 4);
+        $config->set('HTML.DefinitionRev', 5);
 
         if ($def = $config->maybeGetRawHTMLDefinition()) {
             $def->addElement('button', 'Inline', 'Inline', 'Common', [
                 'type' => 'Enum#button,submit,reset',
             ]);
             $def->addAttribute('form', 'target', new \HTMLPurifier_AttrDef_HTML_FrameTarget());
+            $def->addAttribute('iframe', 'allowfullscreen', 'Bool');
         }
-    
+
         $purifier = new HTMLPurifier($config);
-    
+
         return $purifier->purify($html);
     }
 

@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 7.1
-Stable tag: 2.2.3
+Stable tag: 2.2.4
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -92,6 +92,14 @@ That's it. You're done!
 8. Responsive Tables.
 
 == Changelog ==
+
+= 2.2.4 =
+* FIX: Sticky row wobbling when horizontal scroll is enabled
+* FIX: Global table styles not applied on the frontend
+* FIX: Circle rating rendered twice in legacy tables
+* FIX: Links in text losing the open in new tab setting
+* FIX: Fullscreen attribute stripped from embedded iframes
+* FIX: PHP warning when a cell value is empty
 
 = 2.2.3 =
 * NEW: Block tree view in the builder

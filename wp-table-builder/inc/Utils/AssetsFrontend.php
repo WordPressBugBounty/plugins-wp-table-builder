@@ -2,6 +2,8 @@
 
 namespace WPTableBuilder\Utils;
 
+use WPTableBuilder\Core\Settings;
+
 class AssetsFrontend
 {
 
@@ -30,6 +32,10 @@ class AssetsFrontend
         $assets->enqueue_styles();
 
         add_action('wp_footer', function() use ($assets) {
+            $global_styles = Settings::get_styles();
+            if (!empty($global_styles)) {
+                echo '<script type="text/javascript">var WPTB_GLOBAL_STYLES = ' . wp_json_encode($global_styles, JSON_HEX_TAG | JSON_HEX_AMP) . ';</script>';
+            }
             echo $assets->get_scripts();
         });
     }

@@ -1,49 +1,49 @@
 {
-  "_common-AJeCQioW.js": {
-    "file": "assets/common-AJeCQioW.js",
+  "_common-D6svC7Nf.js": {
+    "file": "assets/common-D6svC7Nf.js",
     "name": "common",
     "imports": [
-      "_css-values-CUgfcrP5.js"
+      "_css-values-DkjxhOPi.js"
     ]
   },
-  "_corruption-CNCoGCtD.js": {
-    "file": "assets/corruption-CNCoGCtD.js",
+  "_corruption-B6RWpSnr.js": {
+    "file": "assets/corruption-B6RWpSnr.js",
     "name": "corruption",
     "imports": [
-      "_css-values-CUgfcrP5.js"
+      "_css-values-DkjxhOPi.js"
     ]
   },
-  "_css-values-CUgfcrP5.js": {
-    "file": "assets/css-values-CUgfcrP5.js",
+  "_css-values-DkjxhOPi.js": {
+    "file": "assets/css-values-DkjxhOPi.js",
     "name": "css-values"
   },
-  "_index-B7p8CEui.js": {
-    "file": "assets/index-B7p8CEui.js",
+  "_index-CqARgbaN.js": {
+    "file": "assets/index-CqARgbaN.js",
     "name": "index",
     "imports": [
-      "_css-values-CUgfcrP5.js",
-      "_corruption-CNCoGCtD.js"
+      "_corruption-B6RWpSnr.js",
+      "_css-values-DkjxhOPi.js"
     ]
   },
-  "_renderer-Cy83njVx.js": {
-    "file": "assets/renderer-Cy83njVx.js",
+  "_renderer-B_7tP3BV.js": {
+    "file": "assets/renderer-B_7tP3BV.js",
     "name": "renderer",
     "imports": [
-      "_css-values-CUgfcrP5.js",
-      "_corruption-CNCoGCtD.js"
+      "_css-values-DkjxhOPi.js",
+      "_corruption-B6RWpSnr.js"
     ]
   },
   "src/editor-common.ts": {
-    "file": "assets/editor-common-Czjs34Nk.js",
+    "file": "assets/editor-common-cr3K2ukK.js",
     "name": "editor-common",
     "src": "src/editor-common.ts",
     "isEntry": true,
     "imports": [
-      "_index-B7p8CEui.js",
-      "_corruption-CNCoGCtD.js",
-      "_renderer-Cy83njVx.js",
-      "_common-AJeCQioW.js",
-      "_css-values-CUgfcrP5.js"
+      "_index-CqARgbaN.js",
+      "_corruption-B6RWpSnr.js",
+      "_renderer-B_7tP3BV.js",
+      "_common-D6svC7Nf.js",
+      "_css-values-DkjxhOPi.js"
     ]
   },
   "src/editor.scss": {
@@ -52,35 +52,35 @@
     "isEntry": true
   },
   "src/frontend/common.ts": {
-    "file": "assets/frontend-common-3tZGddzR.js",
+    "file": "assets/frontend-common-LCA52mL7.js",
     "name": "frontend-common",
     "src": "src/frontend/common.ts",
     "isEntry": true,
     "imports": [
-      "_css-values-CUgfcrP5.js",
-      "_common-AJeCQioW.js"
+      "_css-values-DkjxhOPi.js",
+      "_common-D6svC7Nf.js"
     ]
   },
   "src/frontend/index.ts": {
-    "file": "assets/frontend-script-B6Toa878.js",
+    "file": "assets/frontend-script-DQ6hPJLl.js",
     "name": "frontend-script",
     "src": "src/frontend/index.ts",
     "isEntry": true,
     "imports": [
-      "_css-values-CUgfcrP5.js",
-      "_corruption-CNCoGCtD.js",
-      "_renderer-Cy83njVx.js"
+      "_css-values-DkjxhOPi.js",
+      "_corruption-B6RWpSnr.js",
+      "_renderer-B_7tP3BV.js"
     ]
   },
   "src/index.tsx": {
-    "file": "assets/editor-main-8byiWtAM.js",
+    "file": "assets/editor-main-bFf_4oTK.js",
     "name": "editor-main",
     "src": "src/index.tsx",
     "isEntry": true,
     "imports": [
-      "_index-B7p8CEui.js",
-      "_css-values-CUgfcrP5.js",
-      "_corruption-CNCoGCtD.js"
+      "_index-CqARgbaN.js",
+      "_corruption-B6RWpSnr.js",
+      "_css-values-DkjxhOPi.js"
     ]
   },
   "src/public/i18n.ts": {
