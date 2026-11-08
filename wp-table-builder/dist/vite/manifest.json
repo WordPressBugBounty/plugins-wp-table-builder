@@ -1,49 +1,73 @@
 {
-  "_common-D6svC7Nf.js": {
-    "file": "assets/common-D6svC7Nf.js",
+  "../../packages/ui/fonts/BricolageGrotesque-latin-ext.woff2": {
+    "file": "BricolageGrotesque-latin-ext.woff2",
+    "src": "../../packages/ui/fonts/BricolageGrotesque-latin-ext.woff2"
+  },
+  "../../packages/ui/fonts/BricolageGrotesque-latin.woff2": {
+    "file": "BricolageGrotesque-latin.woff2",
+    "src": "../../packages/ui/fonts/BricolageGrotesque-latin.woff2"
+  },
+  "../../packages/ui/fonts/Onest-cyrillic-ext.woff2": {
+    "file": "Onest-cyrillic-ext.woff2",
+    "src": "../../packages/ui/fonts/Onest-cyrillic-ext.woff2"
+  },
+  "../../packages/ui/fonts/Onest-cyrillic.woff2": {
+    "file": "Onest-cyrillic.woff2",
+    "src": "../../packages/ui/fonts/Onest-cyrillic.woff2"
+  },
+  "../../packages/ui/fonts/Onest-latin-ext.woff2": {
+    "file": "Onest-latin-ext.woff2",
+    "src": "../../packages/ui/fonts/Onest-latin-ext.woff2"
+  },
+  "../../packages/ui/fonts/Onest-latin.woff2": {
+    "file": "Onest-latin.woff2",
+    "src": "../../packages/ui/fonts/Onest-latin.woff2"
+  },
+  "_common-BOr4h7L2.js": {
+    "file": "assets/common-BOr4h7L2.js",
     "name": "common",
     "imports": [
-      "_css-values-DkjxhOPi.js"
+      "_css-values-DwC5g3T9.js"
     ]
   },
-  "_corruption-B6RWpSnr.js": {
-    "file": "assets/corruption-B6RWpSnr.js",
+  "_corruption-Fy4mz78A.js": {
+    "file": "assets/corruption-Fy4mz78A.js",
     "name": "corruption",
     "imports": [
-      "_css-values-DkjxhOPi.js"
+      "_css-values-DwC5g3T9.js"
     ]
   },
-  "_css-values-DkjxhOPi.js": {
-    "file": "assets/css-values-DkjxhOPi.js",
+  "_css-values-DwC5g3T9.js": {
+    "file": "assets/css-values-DwC5g3T9.js",
     "name": "css-values"
   },
-  "_index-CqARgbaN.js": {
-    "file": "assets/index-CqARgbaN.js",
+  "_index-B2NnP_wZ.js": {
+    "file": "assets/index-B2NnP_wZ.js",
     "name": "index",
     "imports": [
-      "_corruption-B6RWpSnr.js",
-      "_css-values-DkjxhOPi.js"
+      "_corruption-Fy4mz78A.js",
+      "_css-values-DwC5g3T9.js"
     ]
   },
-  "_renderer-B_7tP3BV.js": {
-    "file": "assets/renderer-B_7tP3BV.js",
+  "_renderer-B0woRXBR.js": {
+    "file": "assets/renderer-B0woRXBR.js",
     "name": "renderer",
     "imports": [
-      "_css-values-DkjxhOPi.js",
-      "_corruption-B6RWpSnr.js"
+      "_css-values-DwC5g3T9.js",
+      "_corruption-Fy4mz78A.js"
     ]
   },
   "src/editor-common.ts": {
-    "file": "assets/editor-common-cr3K2ukK.js",
+    "file": "assets/editor-common-CREpuhPI.js",
     "name": "editor-common",
     "src": "src/editor-common.ts",
     "isEntry": true,
     "imports": [
-      "_index-CqARgbaN.js",
-      "_corruption-B6RWpSnr.js",
-      "_renderer-B_7tP3BV.js",
-      "_common-D6svC7Nf.js",
-      "_css-values-DkjxhOPi.js"
+      "_index-B2NnP_wZ.js",
+      "_corruption-Fy4mz78A.js",
+      "_renderer-B0woRXBR.js",
+      "_common-BOr4h7L2.js",
+      "_css-values-DwC5g3T9.js"
     ]
   },
   "src/editor.scss": {
@@ -52,35 +76,35 @@
     "isEntry": true
   },
   "src/frontend/common.ts": {
-    "file": "assets/frontend-common-LCA52mL7.js",
+    "file": "assets/frontend-common-CrDVQMe2.js",
     "name": "frontend-common",
     "src": "src/frontend/common.ts",
     "isEntry": true,
     "imports": [
-      "_css-values-DkjxhOPi.js",
-      "_common-D6svC7Nf.js"
+      "_css-values-DwC5g3T9.js",
+      "_common-BOr4h7L2.js"
     ]
   },
   "src/frontend/index.ts": {
-    "file": "assets/frontend-script-DQ6hPJLl.js",
+    "file": "assets/frontend-script-BJAxj6ZI.js",
     "name": "frontend-script",
     "src": "src/frontend/index.ts",
     "isEntry": true,
     "imports": [
-      "_css-values-DkjxhOPi.js",
-      "_corruption-B6RWpSnr.js",
-      "_renderer-B_7tP3BV.js"
+      "_css-values-DwC5g3T9.js",
+      "_corruption-Fy4mz78A.js",
+      "_renderer-B0woRXBR.js"
     ]
   },
   "src/index.tsx": {
-    "file": "assets/editor-main-bFf_4oTK.js",
+    "file": "assets/editor-main-FzejYOaS.js",
     "name": "editor-main",
     "src": "src/index.tsx",
     "isEntry": true,
     "imports": [
-      "_index-CqARgbaN.js",
-      "_corruption-B6RWpSnr.js",
-      "_css-values-DkjxhOPi.js"
+      "_index-B2NnP_wZ.js",
+      "_corruption-Fy4mz78A.js",
+      "_css-values-DwC5g3T9.js"
     ]
   },
   "src/public/i18n.ts": {

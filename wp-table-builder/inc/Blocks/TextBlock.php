@@ -25,6 +25,7 @@ class TextBlock implements BaseBlock
 
         content:
         - `props.text`: string — HTML body (paragraphs, links, bold, etc.)
+        - `props.tag`: `"h1"` … `"h6"` to render the text as a heading; omit for a paragraph
 
         typography:
         - `props.fontSize`: CSS font-size (e.g. `"1em"`, `"16px"`); omit to inherit from table

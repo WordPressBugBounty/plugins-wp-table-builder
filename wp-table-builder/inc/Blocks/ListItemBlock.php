@@ -21,17 +21,14 @@ class ListItemBlock implements BaseBlock
 
         content:
         - `props.text`: string — HTML content for the list item body
-        - `props.toolTip`: string — HTML shown in a hover tooltip when non-empty
 
-        behavior:
-        - `props.tooltipPosision`: `"top"` | `"bottom"` | `"left"` | `"right"` — tooltip placement (typo in key is historical)
+        tooltip (`props.tooltip`, an object):
+        - `props.tooltip.text`: string — HTML shown in a hover tooltip when non-empty
+        - `props.tooltip.position`: `"top"` | `"bottom"` | `"left"` | `"right"` — tooltip placement
 
         style:
         - `props.alignment`: `"left"` | `"center"` | `"right"` — per-item override
         - `props.color`: CSS color override for this item
-
-        structure:
-        - `props.index`: number — 1-based position used for ordered list display
 
         Parent:
         - `list-item` blocks must live inside a `list` block

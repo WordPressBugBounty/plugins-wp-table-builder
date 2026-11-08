@@ -21,7 +21,7 @@ class StarRatingBlock implements BaseBlock
 
         content:
         - `props.value`: number — current rating (may be fractional, e.g. `4.5`)
-        - `props.maxValue`: number — number of stars / max rating (typically `5`)
+        - `props.max`: number — number of stars / max rating (typically `5`)
         - `props.showRating`: boolean — show numeric text next to the stars when true
 
         style:

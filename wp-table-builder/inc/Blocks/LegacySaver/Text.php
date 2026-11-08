@@ -23,11 +23,14 @@ class Text
         $html = RenderUtils::strip_xss($attrs['text'] ?? '');
 
         $elId = self::$elemId++;
+        $heading = in_array($attrs['tag'] ?? '', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], true) ? $attrs['tag'] : '';
+        $tag = $heading ?: 'div';
+        $dataTag = $heading ? " data-tag=\"{$heading}\"" : '';
         $innerAttrs = "";
         if (isset($attrs['isFirst']) && $attrs['isFirst']) {
             $innerAttrs = 'style="position: relative;"';
         }
-        return "<div class=\"wptb-text-container wptb-ph-element wptb-element-text-{$elId}\" style=\"{$style}\"><div {$innerAttrs}>{$html}</div></div>";
+        return "<div class=\"wptb-text-container wptb-ph-element wptb-element-text-{$elId}\"{$dataTag} style=\"{$style}\"><{$tag} {$innerAttrs}>{$html}</{$tag}></div>";
     }
 }
 

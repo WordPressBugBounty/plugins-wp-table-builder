@@ -24,26 +24,26 @@ class ImageBlock implements BaseBlock
         - `props.alt`: string — accessibility alt text
 
         sizing:
-        - `props.width`: CSS width of the displayed image (e.g. `"100%"`, `"200px"`)
-        - `props.sizeRelativeTo`: string — how width is interpreted (`"self"` | `"container"`)
-        - `props.size`: string — optional aspect/preset token when using ratio sizing
-        - `props.imgWidth`: number — natural pixel width of the source (used for ratio math)
-        - `props.imgHeight`: number — natural pixel height of the source (used for ratio math)
+        - `props.width`: CSS width of the displayed image (e.g. `"100%"`, `"200px"`), used when relative to the container
+        - `props.sizeRelativeTo`: `"container"` | `"self"` — what the size is measured against
+        - `props.size`: string — two CSS lengths joined by `:` (e.g. `"50%:50%"`), used when relative to the image itself
+        - `props.naturalWidth`: number — natural pixel width of the source (used for the self-relative math)
+        - `props.naturalHeight`: number — natural pixel height of the source (used for the self-relative math)
 
         layout:
         - `props.alignment`: `"left"` | `"center"` | `"right"` — horizontal alignment in the cell
         - `props.padding`: SpacingValue
         - `props.margin`: SpacingValue
 
-        link:
-        - `props.url`: string — wraps the image in a link when set; **protected, never mutate**
-        - `props.linkTarget`: `"_blank"` | `"_self"`
-        - `props.linkRel`: string[] — rel tokens
-        - `props.convertToAbsolute`: boolean — resolve relative link URLs on render
+        link (`props.link`, an object):
+        - `props.link.url`: string — wraps the image in a link when set; **protected, never mutate**
+        - `props.link.target`: `"_blank"` | `"_self"`
+        - `props.link.rel`: string[] — rel tokens
+        - `props.link.convertToAbsolute`: boolean — resolve relative link URLs on render
 
         Protected props — never mutate:
         - `props.src`
-        - `props.url`
+        - `props.link.url`
         AI_SCHEMA;
     }
 }

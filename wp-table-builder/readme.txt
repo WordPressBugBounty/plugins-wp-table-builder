@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 7.1
-Stable tag: 2.2.4
+Stable tag: 2.3.0
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -92,6 +92,26 @@ That's it. You're done!
 8. Responsive Tables.
 
 == Changelog ==
+
+= 2.3.0 =
+* NEW: Redesigned builder, table list, import, export, settings and welcome pages
+* NEW: Create page with table templates grouped by category
+* NEW: Table-wide vertical alignment, working together with content distribution
+* NEW: Text blocks can be rendered as headings (H1 to H6)
+* NEW: Search in the elements and settings panels
+* IMPROVE: New rich text editor with undo and redo tied to the builder history
+* IMPROVE: Column widths are applied by the browser instead of a calculated table width
+* IMPROVE: Updated Freemius SDK to 2.13.5
+* FIX: Builder marked as changed right after loading a table
+* FIX: Column count wrong when cells span columns
+* FIX: Stale row and column props left behind by earlier operations
+* FIX: Cell border saved when it matched the inner border
+* FIX: List numbering follows the item position
+* FIX: List bullets fall back to discs on the frontend
+* FIX: List item tooltip position defaulting to top
+* [PRO] NEW: Pro deactivates with a notice when the free plugin is older than it supports
+* [PRO] FIX: Circle rating number label differing between builder and frontend
+* [PRO] FIX: Styled list alignment not applied on the frontend
 
 = 2.2.4 =
 * FIX: Sticky row wobbling when horizontal scroll is enabled

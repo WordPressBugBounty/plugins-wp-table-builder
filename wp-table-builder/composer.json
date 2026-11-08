@@ -5,6 +5,24 @@
       "WPTableBuilder\\": "inc/"
     }
   },
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "freemius/wordpress-sdk",
+        "version": "2.13.5",
+        "dist": {
+          "type": "zip",
+          "url": "../../libs/freemius-sdk-2.13.5.zip"
+        },
+        "autoload": {
+          "files": [
+            "start.php"
+          ]
+        }
+      }
+    }
+  ],
   "authors": [
     {
       "name": "Saad",
@@ -15,7 +33,7 @@
     "php-stubs/wordpress-stubs": "^6.7"
   },
   "require": {
-    "freemius/wordpress-sdk": "^2.13",
+    "freemius/wordpress-sdk": "^2.13.5",
     "ezyang/htmlpurifier": "^4.19"
   }
 }
