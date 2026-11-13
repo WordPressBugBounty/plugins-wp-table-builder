@@ -57,6 +57,30 @@ class WPTableBuilder
         return class_exists(WPTableBuilderPro::class) && WPTableBuilderPro::is_active();
     }
 
+    /**
+     * Hooked on a page's load-{$hook_suffix}. Some plugins add their notices as late as
+     * admin_head, so the clearing waits for in_admin_header, right before they print.
+     */
+    public static function remove_distractions()
+    {
+        add_action('in_admin_header', [self::class, 'hide_notices'], PHP_INT_MAX);
+    }
+
+    /** Keeps admin notices, update nags and the footer text off the current page. */
+    public static function hide_notices()
+    {
+        remove_all_actions('admin_notices');
+        remove_all_actions('all_admin_notices');
+        remove_all_actions('network_admin_notices');
+        remove_all_actions('user_admin_notices');
+
+        add_filter('admin_footer_text', '__return_empty_string', PHP_INT_MAX);
+        add_filter('update_footer', '__return_empty_string', PHP_INT_MAX);
+
+        // Notices echoed outside the notice hooks, e.g. on in_admin_header.
+        echo '<style>#wpcontent :is(.notice, .updated, .error, .update-nag):not(#wptb-app-root *) { display: none !important; }</style>';
+    }
+
 
     public static function add_menu()
     {
@@ -64,7 +88,9 @@ class WPTableBuilder
             return;
         }
 
-        add_menu_page(
+        $hooks = [];
+
+        $hooks[] = add_menu_page(
             'WP Table Builder',
             'WP Table Builder',
             'read',
@@ -74,7 +100,7 @@ class WPTableBuilder
             50
         );
 
-        add_submenu_page(
+        $hooks[] = add_submenu_page(
             'wptb',
             __('WP Table Builder', 'wp-table-builder'),
             __('All Tables', 'wp-table-builder'),
@@ -83,7 +109,7 @@ class WPTableBuilder
             [self::class, 'wptb_page']
         );
 
-        add_submenu_page(
+        $hooks[] = add_submenu_page(
             'wptb',
             __('WP Table Builder', 'wp-table-builder'),
             __('Add New', 'wp-table-builder'),
@@ -92,7 +118,7 @@ class WPTableBuilder
             [self::class, 'wptb_page']
         );
 
-        add_submenu_page(
+        $hooks[] = add_submenu_page(
             '_',
             __('WP Table Builder', 'wp-table-builder'),
             __('Builder', 'wp-table-builder'),
@@ -101,7 +127,7 @@ class WPTableBuilder
             [self::class, 'wptb_page']
         );
 
-        add_submenu_page(
+        $hooks[] = add_submenu_page(
             'wptb',
             __('WP Table Builder', 'wp-table-builder'),
             __('Import', 'wp-table-builder'),
@@ -111,7 +137,7 @@ class WPTableBuilder
         );
 
 
-        add_submenu_page(
+        $hooks[] = add_submenu_page(
             'wptb',
             __('WP Table Builder', 'wp-table-builder'),
             __('Export', 'wp-table-builder'),
@@ -121,7 +147,7 @@ class WPTableBuilder
         );
 
 
-        add_submenu_page(
+        $hooks[] = add_submenu_page(
             'wptb',
             __('WP Table Builder', 'wp-table-builder'),
             __('Settings', 'wp-table-builder'),
@@ -130,7 +156,7 @@ class WPTableBuilder
             [self::class, 'wptb_page']
         );
 
-        add_submenu_page(
+        $hooks[] = add_submenu_page(
             '',
             __('WP Table Builder', 'wp-table-builder'),
             __('Welcome', 'wp-table-builder'),
@@ -138,6 +164,11 @@ class WPTableBuilder
             'wptb-welcome',
             [self::class, 'wptb_page']
         );
+
+        // add_submenu_page returns false when the user lacks the capability.
+        foreach (array_filter($hooks) as $hook) {
+            add_action("load-$hook", [self::class, 'remove_distractions']);
+        }
     }
 
 

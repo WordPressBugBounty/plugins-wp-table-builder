@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 7.1
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -92,6 +92,15 @@ That's it. You're done!
 8. Responsive Tables.
 
 == Changelog ==
+
+= 2.3.1 =
+* FIX: Builder table showing two scrollbars
+* FIX: Other plugins' admin notices showing on WP Table Builder pages
+* FIX: Horizontal scroll turned on for older tables that had it off
+* FIX: Tables embedded with a shortcode inside a table cell not rendering
+* FIX: Row height stuck at 1px in Firefox
+* FIX: Column minimum widths ignored in Firefox
+* FIX: Table import failing for tables with styled list or text icon elements
 
 = 2.3.0 =
 * NEW: Redesigned builder, table list, import, export, settings and welcome pages
